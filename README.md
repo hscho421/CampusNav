@@ -1,6 +1,6 @@
 # CampusNav
 
-CampusNav is a web application designed to assist students at the University of Illinois Urbana-Champaign (UIUC) in efficiently navigating their expansive campus. The primary goal is to simplify course registration by helping students determine if the walking distances and times between their selected classes are manageable within the given timeframe. By leveraging the power of Google Maps or Apple Maps API, CampusNav provides accurate walking routes and times, ensuring students can plan their schedules with confidence.
+CampusNav is a web application designed to assist college students in efficiently navigating their expansive campus. The primary goal is to simplify course registration by helping students determine if the walking distances and times between their selected classes are manageable within the given timeframe. By leveraging the power of Google Maps or Apple Maps API, CampusNav provides accurate walking routes and times, ensuring students can plan their schedules with confidence.
 
 ## Problem Statement
 
