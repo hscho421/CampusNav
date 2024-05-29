@@ -17,9 +17,8 @@ Many college students often face difficulties during course registration due to 
 
 ## Tech Stack
 
-- **Frontend**: React (Javascript), HTML, CSS
-- **Backend**: Django (Python)
-- **Database**: PostgreSQL or SQLite
+- **Frontend**: React (JavaScript), HTML, CSS
+- **Backend**: Flask (Python)
 - **Maps API**: Google Maps API or Apple Maps API for calculating walking distances and times between class locations.
 - **Hosting**: AWS
 
