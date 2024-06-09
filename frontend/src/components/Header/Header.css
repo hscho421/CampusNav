@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center items vertically */
+  padding: 10px 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 40px;
+  margin-left: 10px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav a {
+  margin: 0 10px;
+  color: #fff;
+  text-decoration: none;
+  padding: 10px;
+  display: flex;
+  align-items: center; /* Center text vertically */
+}
+
+.nav svg {
+  margin-left: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer; /* Change cursor to pointer to indicate it's interactive */
+  display: flex;
+  align-items: center; /* Center SVG vertically */
+}
+
+.get-started-button {
+  border: solid #202020 2px;
+  border-radius: 100rem;
+  padding: 10px 20px;
+  text-decoration: none;
+}
