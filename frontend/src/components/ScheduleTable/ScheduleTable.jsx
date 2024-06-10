@@ -2,17 +2,18 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import './ScheduleTable.css';
 
+const initialCourses = Array.from({ length: 5 }, () => ({
+    weekday: '',
+    courseName: '',
+    location: '',
+    startHour: '',
+    startMinute: '',
+    endHour: '',
+    endMinute: ''
+}));
+
 const ScheduleTable = () => {
     const { t } = useTranslation();
-    const initialCourses = Array(5).fill({ 
-        weekday: '', 
-        courseName: '', 
-        location: '', 
-        startHour: '', 
-        startMinute: '', 
-        endHour: '', 
-        endMinute: '' 
-    });
     const [selectedWeekday, setSelectedWeekday] = useState('');
     const [courses, setCourses] = useState(initialCourses);
 
@@ -20,19 +21,21 @@ const ScheduleTable = () => {
         const { name, value } = event.target;
         const updatedCourses = [...courses];
         updatedCourses[index][name] = value;
-        updatedCourses[index].weekday = selectedWeekday; // Set the weekday based on selected button
+        updatedCourses[index].weekday = selectedWeekday;
         setCourses(updatedCourses);
-
-        if (index === courses.length - 1 && value !== '') {
-            const allFieldsFilled = Object.values(updatedCourses[index]).every(field => field !== '');
-            if (allFieldsFilled) {
-                setCourses([...courses, { weekday: '', courseName: '', location: '', startHour: '', startMinute: '', endHour: '', endMinute: '' }]);
-            }
-        }
     };
 
     const handleDayClick = (day) => {
         setSelectedWeekday(day);
+    };
+
+    const addRow = () => {
+        setCourses([...courses, { weekday: '', courseName: '', location: '', startHour: '', startMinute: '', endHour: '', endMinute: '' }]);
+    };
+
+    const removeRow = (index) => {
+        const updatedCourses = courses.filter((_, idx) => idx !== index);
+        setCourses(updatedCourses);
     };
 
     const generateOptions = (range) => {
@@ -50,6 +53,7 @@ const ScheduleTable = () => {
                         type="button"
                         className={selectedWeekday === day ? 'selected-day' : ''}
                         onClick={() => handleDayClick(day)}
+                        aria-pressed={selectedWeekday === day}
                     >
                         {t(day)}
                     </button>
@@ -63,6 +67,7 @@ const ScheduleTable = () => {
                             <th>{t('location')}</th>
                             <th>{t('startTime')}</th>
                             <th>{t('endTime')}</th>
+                            <th>{t('actions')}</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -133,6 +138,14 @@ const ScheduleTable = () => {
                                             {generateOptions(60)}
                                         </select>
                                     </div>
+                                </td>
+                                <td>
+                                <button type="button" onClick={addRow} className="action-button">
+                                    {t('addRow')}
+                                </button>
+                                <button type="button" onClick={() => removeRow(index)} className="action-button">
+                                    {t('removeRow')}
+                                </button>
                                 </td>
                             </tr>
                         ))}

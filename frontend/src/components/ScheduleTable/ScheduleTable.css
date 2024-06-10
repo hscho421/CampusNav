@@ -20,11 +20,13 @@
 }
 
 .table-wrapper {
+    z-index: 1;
+    box-shadow: #00000084 0 0 15px;
     border: none;
     width: 50%;
     border-radius: 10px;
     overflow: hidden; /* Ensures rounded corners are applied correctly */
-    margin: 5px;
+    margin: 20px;
 }
 table {
     width: 100%; /* Make sure the table takes up the full width of the wrapper */
@@ -35,7 +37,6 @@ th, td {
     padding: 8px;
     text-align: center;
     vertical-align: middle;
-    width: 25%;
 }
 
 th {
@@ -67,9 +68,12 @@ td {
     justify-content: center;
     align-items: center;
     background-color: transparent;
+    
 }
 
 .time-select {
+    outline: none;
+    width:auto;
     border: none;
     background: transparent;
     font-size: inherit;
@@ -81,4 +85,17 @@ td {
     -moz-appearance: none;
     appearance: none;
     text-align: center;
+}
+
+.action-button {
+    width: 100%;
+    padding: 3px;
+    margin-bottom: 2px;
+    background-color: transparent;
+    border: solid 1px;
+    border-radius: 100rem;
+}
+.action-button:hover {
+    background-color: green;
+    transition: 0.4s ease;
 }
