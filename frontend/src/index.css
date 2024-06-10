@@ -2,8 +2,8 @@
   background-color: #424242;
   font-family: "Montserrat", sans-serif;
   color: #E2E2E2;
-  margin-right: 0;
-  margin-left: 0;
+  margin: 0;
+  word-break: keep-all; /* Prevent line breaks within words */
 }
 
 ::-webkit-scrollbar {

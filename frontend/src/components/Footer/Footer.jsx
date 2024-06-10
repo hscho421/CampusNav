@@ -1,13 +1,16 @@
 import React from "react";
-import './Footer.css'
+import './Footer.css';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+
+    const { t } = useTranslation();
     
     return (
         <footer className="footer">
             <div className="footer-content">
                 <div className="footer-left">
-                    <span>contact: (808) 277 - 8083</span>
+                    <span>contact: (123) 456 - 7899</span>
                 </div>
                 <div className="footer-center">
                     <p className="copyright">
@@ -16,8 +19,8 @@ const Footer = () => {
                 </div>
                 <div className="footer-right">
                     <nav className="nav">
-                        <a href="#terms-of-conditions">Terms of Conditions</a>
-                        <a href="#privacy-policy">Privacy Policy</a>
+                        <a href="#terms-of-conditions">{t('termsOfConditions')}</a>
+                        <a href="#privacy-policy">{t('privacyPolicy')}</a>
                     </nav>
                 </div>
             </div>
