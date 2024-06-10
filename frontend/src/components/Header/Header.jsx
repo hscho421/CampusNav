@@ -2,7 +2,7 @@ import React, { useTransition } from "react";
 import { useTranslation } from "react-i18next";
 import logo from '../../assets/logo.png';
 import './Header.css';
-import LanguageSelect  from "../LanguageSelect";
+import LanguageSelect  from ".././LanguageSelect/LanguageSelect";
 
 const Header = () => {
 

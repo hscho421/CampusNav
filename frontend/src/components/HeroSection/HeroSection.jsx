@@ -1,5 +1,5 @@
 import React from "react";
-import screenDisplay from "../../assets/screenDisplay.svg";
+import screenDisplay from "../../assets/screen.png";
 import './HeroSection.css';
 import { useTranslation } from 'react-i18next';
 
