@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import './ScheduleTable.css'
 
 const ScheduleTable = () => {
     const { t } = useTranslation();
     const [courses, setCourses] = useState([
-        { [t('courseName')]: '', [t('location')]: '', [t('startTime')]: '', [t('endTime')]: ''}
+        { courseName: '', location: '', startTime: '', endTime: '' }
     ]);
 
     const handleChange = (index, event) => {
-        const values = [...courses];
-        values[index][event.target.name] = event.target.value;
-        setCourses(event);
+        const { name, value } = event.target;
+        const updatedCourses = [...courses];
+        updatedCourses[index][name] = value;
+        setCourses(updatedCourses);
 
-        if (index === courses.length - 1 && event.target.value !== '') {
-            const allFieldsFilled = Object.values(values[index]).every(field => field !== '');
+        if (index === courses.length - 1 && value !== '') {
+            const allFieldsFilled = Object.values(updatedCourses[index]).every(field => field !== '');
             if (allFieldsFilled) {
               setCourses([...courses, { courseName: '', location: '', startTime: '', endTime: '' }]);
             }
@@ -24,10 +26,10 @@ const ScheduleTable = () => {
         <table>
             <thead>
                 <tr>
-                    <th>Course Name</th>
-                    <th>Location</th>
-                    <th>Start Time</th>
-                    <th>End Time</th>
+                    <th>{t('courseName')}</th>
+                    <th>{t('location')}</th>
+                    <th>{t('startTime')}</th>
+                    <th>{t('endTime')}</th>
                 </tr>
             </thead>
             <tbody>
@@ -35,11 +37,11 @@ const ScheduleTable = () => {
                 <tr key={index}>
                     <td>
                         <input
-                        type="text"
-                        name="courseName"
-                        value={course.courseName}
-                        onChange={(event) => handleChange(index, event)}
-                    />
+                            type="text"
+                            name="courseName"
+                            value={course.courseName}
+                            onChange={(event) => handleChange(index, event)}
+                        />
                     </td>
                     <td>
                         <input
@@ -66,7 +68,7 @@ const ScheduleTable = () => {
                         />
                     </td>
                 </tr>
-                ))}
+            ))}
             </tbody>
         </table>
     );
