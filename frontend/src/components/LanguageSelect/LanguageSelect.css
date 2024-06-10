@@ -1,0 +1,33 @@
+.language-selector {
+    position: relative;
+    display: inline-block;
+    padding: 10px;
+  }
+ 
+  
+  .dropdown {
+    position: absolute;
+    top: 100%; /* Position below the button */
+    right: 0%;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px; /* Adjust spacing below the icon */
+
+  }
+  
+  .dropdown ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .dropdown li {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  
