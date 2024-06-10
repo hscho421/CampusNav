@@ -4,6 +4,7 @@
   padding: 0px;
   overflow: hidden; 
   height: 100vh; /* Ensure full viewport height */
+  user-select: none;
 }
 
 .hero-content {
