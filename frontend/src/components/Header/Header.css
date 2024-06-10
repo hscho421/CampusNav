@@ -13,6 +13,10 @@
   align-items: center;
 }
 
+.logo:hover {
+  cursor: pointer;
+}
+
 .logo img {
   height: 40px;
   margin-left: 10px;

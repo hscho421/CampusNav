@@ -1,8 +1,11 @@
+
 .footer {
     display: flex;
     justify-content: center;
     align-items: flex-end ;
     user-select: none;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .footer-content {
