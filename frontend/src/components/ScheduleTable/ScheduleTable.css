@@ -19,21 +19,32 @@
     background-color: #4CAF50; /* Green */
 }
 
+.table-wrapper {
+    border: none;
+    width: 50%;
+    border-radius: 10px;
+    overflow: hidden; /* Ensures rounded corners are applied correctly */
+    margin: 5px;
+}
 table {
-    width: 100%;
+    width: 100%; /* Make sure the table takes up the full width of the wrapper */
     border-collapse: collapse;
 }
 
 th, td {
-    border: 1px solid #ddd;
     padding: 8px;
     text-align: center;
     vertical-align: middle;
+    width: 25%;
 }
 
 th {
     background-color:green;
-    border: 2px solid black
+    border: none
+}
+
+td {
+    background-color: #00000079;
 }
 
 .invisible-input {
@@ -55,6 +66,7 @@ th {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: transparent;
 }
 
 .time-select {

@@ -4,10 +4,17 @@ import './ScheduleTable.css';
 
 const ScheduleTable = () => {
     const { t } = useTranslation();
+    const initialCourses = Array(5).fill({ 
+        weekday: '', 
+        courseName: '', 
+        location: '', 
+        startHour: '', 
+        startMinute: '', 
+        endHour: '', 
+        endMinute: '' 
+    });
     const [selectedWeekday, setSelectedWeekday] = useState('');
-    const [courses, setCourses] = useState([
-        { weekday: '', courseName: '', location: '', startHour: '', startMinute: '', endHour: '', endMinute: '' }
-    ]);
+    const [courses, setCourses] = useState(initialCourses);
 
     const handleChange = (index, event) => {
         const { name, value } = event.target;
@@ -48,86 +55,90 @@ const ScheduleTable = () => {
                     </button>
                 ))}
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>{t('courseName')}</th>
-                        <th>{t('location')}</th>
-                        <th>{t('startTime')}</th>
-                        <th>{t('endTime')}</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {courses.map((course, index) => (
-                        <tr key={index}>
-                            <td>
-                                <input
-                                    type="text"
-                                    name="courseName"
-                                    value={course.courseName}
-                                    onChange={(event) => handleChange(index, event)}
-                                    className="invisible-input"
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    name="location"
-                                    value={course.location}
-                                    onChange={(event) => handleChange(index, event)}
-                                    className="invisible-input"
-                                />
-                            </td>
-                            <td>
-                                <div className="time-select-wrapper">
-                                    <select
-                                        name="startHour"
-                                        value={course.startHour}
-                                        onChange={(event) => handleChange(index, event)}
-                                        className="time-select"
-                                    >
-                                        <option value="">{t('--')}</option>
-                                        {generateOptions(24)}
-                                    </select>
-                                    :
-                                    <select
-                                        name="startMinute"
-                                        value={course.startMinute}
-                                        onChange={(event) => handleChange(index, event)}
-                                        className="time-select"
-                                    >
-                                        <option value="">{t('--')}</option>
-                                        {generateOptions(60)}
-                                    </select>
-                                </div>
-                            </td>
-                            <td>
-                                <div className="time-select-wrapper">
-                                    <select
-                                        name="endHour"
-                                        value={course.endHour}
-                                        onChange={(event) => handleChange(index, event)}
-                                        className="time-select"
-                                    >
-                                        <option value="">{t('--')}</option>
-                                        {generateOptions(24)}
-                                    </select>
-                                    :
-                                    <select
-                                        name="endMinute"
-                                        value={course.endMinute}
-                                        onChange={(event) => handleChange(index, event)}
-                                        className="time-select"
-                                    >
-                                        <option value="">{t('--')}</option>
-                                        {generateOptions(60)}
-                                    </select>
-                                </div>
-                            </td>
+            <div className="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>{t('courseName')}</th>
+                            <th>{t('location')}</th>
+                            <th>{t('startTime')}</th>
+                            <th>{t('endTime')}</th>
                         </tr>
-                    ))}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {courses.map((course, index) => (
+                            <tr key={index}>
+                                <td>
+                                    <input
+                                        type="text"
+                                        name="courseName"
+                                        value={course.courseName}
+                                        onChange={(event) => handleChange(index, event)}
+                                        className="invisible-input"
+                                        placeholder={t('enterCourseName')}
+                                    />
+                                </td>
+                                <td>
+                                    <input
+                                        type="text"
+                                        name="location"
+                                        value={course.location}
+                                        onChange={(event) => handleChange(index, event)}
+                                        className="invisible-input"
+                                        placeholder={t('enterLocation')}
+                                    />
+                                </td>
+                                <td>
+                                    <div className="time-select-wrapper">
+                                        <select
+                                            name="startHour"
+                                            value={course.startHour}
+                                            onChange={(event) => handleChange(index, event)}
+                                            className="time-select"
+                                        >
+                                            <option value="">{t('--')}</option>
+                                            {generateOptions(24)}
+                                        </select>
+                                        :
+                                        <select
+                                            name="startMinute"
+                                            value={course.startMinute}
+                                            onChange={(event) => handleChange(index, event)}
+                                            className="time-select"
+                                        >
+                                            <option value="">{t('--')}</option>
+                                            {generateOptions(60)}
+                                        </select>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div className="time-select-wrapper">
+                                        <select
+                                            name="endHour"
+                                            value={course.endHour}
+                                            onChange={(event) => handleChange(index, event)}
+                                            className="time-select"
+                                        >
+                                            <option value="">{t('--')}</option>
+                                            {generateOptions(24)}
+                                        </select>
+                                        :
+                                        <select
+                                            name="endMinute"
+                                            value={course.endMinute}
+                                            onChange={(event) => handleChange(index, event)}
+                                            className="time-select"
+                                        >
+                                            <option value="">{t('--')}</option>
+                                            {generateOptions(60)}
+                                        </select>
+                                    </div>
+                                </td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
