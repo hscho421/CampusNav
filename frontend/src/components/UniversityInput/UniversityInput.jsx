@@ -13,21 +13,23 @@ const UniversityInput = ({ onSubmit }) => {
     }
     return (
         <div className="university-input">
-            <h1>{t('enterUniversity')}</h1>
-            <p>{t('enterUniversityMessage')}</p>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder={t('universityPlaceholder')}
-                    className="university-search"
-                    value={university}
-                    onChange={(e) => setUniversity(e.target.value)}
-                    required
-                />
-                <button type="submit" className="submit-university">
-                    Submit
-                </button>
-            </form>
+            <div className="university-box">
+                <h1>{t('enterUniversity')}</h1>
+                <p>{t('enterUniversityMessage')}</p>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        placeholder={t('universityPlaceholder')}
+                        className="university-search"
+                        value={university}
+                        onChange={(e) => setUniversity(e.target.value)}
+                        required
+                    />
+                    <button type="submit" className="submit-university">
+                        Submit
+                    </button>
+                </form>
+            </div>
         </div>
     );
 

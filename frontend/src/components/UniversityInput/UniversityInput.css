@@ -1,24 +1,28 @@
     .university-input {
-        border: none;
-        padding: 20px;
-        height: 50vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .university-box {
+        margin-top: 10%;
+        height: fit-content;
+        width: fit-content;
+        align-items: center;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: fit-content;
-        margin: auto;
+        text-align: center;
+        padding: 20px;
         border-radius: 10px;
     }
     
-    .university-input h1 {
+    .university-box h1 {
         font-size: 3rem;
     }
     
-    .university-input p {
+    .university-box p {
         color: #666;
-        text-align: center;
-        max-width: 75vh;
         margin-bottom: 5rem;
+        width:75%
 
     }
     
@@ -46,7 +50,6 @@
         cursor: pointer;
         font-size: 1em ;
         justify-content: center; /* Ensure the content inside the button is centered */
-        align-items: center; /* Ensure the content inside the button is centered */
         margin: auto;
     }
 

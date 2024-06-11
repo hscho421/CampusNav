@@ -25,9 +25,11 @@ function App() {
     <div className='App'>
       <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');</style>
       <Header onGetStarted={handleGetStarted} goHome = {goHome}/>
-        {state === 0 && <HeroSection onGetStarted={handleGetStarted} />}
-        {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
-        {state === 2 && <ScheduleTable />}
+        <main className='main-content'>
+          {state === 0 && <HeroSection onGetStarted={handleGetStarted} />}
+          {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
+          {state === 2 && <ScheduleTable />}
+        </main>
       <Footer />
     </div>
   );

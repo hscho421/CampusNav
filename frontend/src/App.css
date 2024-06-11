@@ -3,3 +3,36 @@
     flex-direction: column;
     min-height: 100vh;
   }
+* {
+  background-color: #424242;
+  font-family: "Montserrat", sans-serif;
+  color: #E2E2E2;
+  margin: 0;
+  word-break: keep-all; /* Prevent line breaks within words */
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #202020;
+  border-radius: 100rem;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #e3e3e3;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+main {
+  flex: 1;
+}
