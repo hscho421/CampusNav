@@ -14,19 +14,13 @@ const initialCourses = Array.from({ length: 5 }, () => ({
 
 const ScheduleTable = () => {
     const { t } = useTranslation();
-    const [selectedWeekday, setSelectedWeekday] = useState('');
     const [courses, setCourses] = useState(initialCourses);
 
     const handleChange = (index, event) => {
         const { name, value } = event.target;
         const updatedCourses = [...courses];
         updatedCourses[index][name] = value;
-        updatedCourses[index].weekday = selectedWeekday;
         setCourses(updatedCourses);
-    };
-
-    const handleDayClick = (day) => {
-        setSelectedWeekday(day);
     };
 
     const addRow = () => {
@@ -46,23 +40,11 @@ const ScheduleTable = () => {
 
     return (
         <div>
-            <div className="weekday-buttons">
-                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map((day) => (
-                    <button
-                        key={day}
-                        type="button"
-                        className={selectedWeekday === day ? 'selected-day' : ''}
-                        onClick={() => handleDayClick(day)}
-                        aria-pressed={selectedWeekday === day}
-                    >
-                        {t(day)}
-                    </button>
-                ))}
-            </div>
             <div className="table-wrapper">
                 <table>
                     <thead>
                         <tr>
+                            <th>{t('day')}</th>
                             <th>{t('courseName')}</th>
                             <th>{t('location')}</th>
                             <th>{t('startTime')}</th>
@@ -73,6 +55,21 @@ const ScheduleTable = () => {
                     <tbody>
                         {courses.map((course, index) => (
                             <tr key={index}>
+                                <td>
+                                    <select
+                                        name="weekday"
+                                        value={course.weekday}
+                                        onChange={(event) => handleChange(index, event)}
+                                        className="invisible-input"
+                                    >
+                                        <option value="" disabled>{t('selectWeekday')}</option>
+                                        <option value="Monday">{t('Monday')}</option>
+                                        <option value="Tuesday">{t('Tuesday')}</option>
+                                        <option value="Wednesday">{t('Wednesday')}</option>
+                                        <option value="Thursday">{t('Thursday')}</option>
+                                        <option value="Friday">{t('Friday')}</option>
+                                    </select>
+                                </td>
                                 <td>
                                     <input
                                         type="text"
@@ -140,12 +137,16 @@ const ScheduleTable = () => {
                                     </div>
                                 </td>
                                 <td>
-                                <button type="button" onClick={addRow} className="action-button">
-                                    {t('addRow')}
-                                </button>
-                                <button type="button" onClick={() => removeRow(index)} className="action-button">
-                                    {t('removeRow')}
-                                </button>
+                                    <button type="button" onClick={addRow} className="action-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="control-button" viewBox="0 0 16 16">
+                                            <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z"/>
+                                        </svg>
+                                    </button>
+                                    <button type="button" onClick={() => removeRow(index)} className="action-button">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="control-button" viewBox="0 0 16 16">
+                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1z"/>
+                                        </svg>
+                                    </button>
                                 </td>
                             </tr>
                         ))}

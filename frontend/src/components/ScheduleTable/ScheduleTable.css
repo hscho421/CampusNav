@@ -88,14 +88,16 @@ td {
 }
 
 .action-button {
-    width: 100%;
-    padding: 3px;
-    margin-bottom: 2px;
     background-color: transparent;
-    border: solid 1px;
-    border-radius: 100rem;
+    border: none;
 }
-.action-button:hover {
-    background-color: green;
+
+.action-button .control-button {
+    background: none;
+}
+
+.action-button:hover .control-button {
+    cursor: pointer;
+    fill: gray; /* Change this to your desired hover color */
     transition: 0.4s ease;
 }
