@@ -1,0 +1,19 @@
+/* src/components/TimeTable.css */
+.time-table {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .day-column {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 18%;
+  }
+  
+  .course {
+    background-color: #f9f9f9;
+    margin: 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
