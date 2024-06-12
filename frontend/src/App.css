@@ -36,3 +36,13 @@ html, body {
 main {
   flex: 1;
 }
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.box {
+  padding: 10px;
+}

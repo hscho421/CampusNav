@@ -1,19 +1,77 @@
-/* src/components/TimeTable.css */
+* {
+  border: none;
+  color: #202020;
+}
+
+.time-table-container {
+  height: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: black 0 0 15px;
+}
 .time-table {
-    display: flex;
-    justify-content: space-around;
-  }
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 100%;
+  background-color: #D1D1D1;
+  z-index: 1;
+
+}
   
-  .day-column {
-    border: 1px solid #ccc;
-    padding: 10px;
-    width: 18%;
-  }
+.Monday-column, .Tuesday-column, .Wednesday-column, .Thursday-column, .Friday-column  {
+  text-align: center;
+  padding-top: 5px;
+  flex: 1;
+  margin: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  z-index: 2;
+  box-shadow: #00000058 0 0 10px;
+
+}
+.Monday-column {
+  background-color: #DED381;
+}
+
+.Tuesday-column {
+  background-color: #B0CDD3;
+}
+
+.Wednesday-column {
+  background-color: #FCF4E3;
+}
+
+.Thursday-column {
+  background-color: #FDFDF1;
+}
+
+.Friday-column {
+  background-color: #C1D7C2;
+}
+
+.day {
+  color: #404040;
+  border: none;
+  background-color: transparent;
+}
   
-  .course {
-    background-color: #f9f9f9;
-    margin: 10px 0;
-    padding: 10px;
-    border: 1px solid #ddd;
-  }
-  
+.course {
+  margin: 10px;
+  border-radius: 5px;
+  overflow: hidden;
+  border: none;
+  z-index: 2;
+  box-shadow: #909090 0 0 10px;
+  transition: margin 0.2s ease-in-out;
+}
+
+.course:hover {
+  margin: 5px;
+}
+.course p {
+  padding: 5px;
+  text-align: left;
+  background-color: pink;
+  color: #202020;
+}

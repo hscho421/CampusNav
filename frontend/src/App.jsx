@@ -39,11 +39,12 @@ function App() {
         {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
         {state === 2 && (
           <div className='content-container'>
-            <ScheduleTable setCourses={setCourses} />
-            <div className='view-timetable-button'>
-              <button onClick={handleViewTimetable}>View Timetable</button>
+            <div className='box'>
+              <ScheduleTable setCourses={setCourses} />
             </div>
-            {showTimetable && <TimeTable courses={courses} />}
+            <div className='box'>
+              <TimeTable courses={courses} />
+            </div>
           </div>
         )}
       </main>
