@@ -28,7 +28,6 @@
     
     .university-search {
         margin: 0;
-        width: 100%;
         padding: 15px;
         border-radius: 100rem;
         border: 1px solid #e3e3e3;
@@ -57,3 +56,38 @@
         background-color: #202020;
         transition: 0.2s;
     }
+
+
+.dropdown {
+    border: 2px solid;
+    position:relative;
+    width: 50vw;  /* Adjust width according to padding */
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-height: 20vh;
+    overflow-y: auto;
+    z-index: 1000;  /* Ensure the dropdown is above other elements */
+    margin-top: -20px;  /* Adjust to fit below the input */
+    margin-bottom: 20px;
+    background-color: #e3e3e3;
+  }
+  
+  .university-list {
+    background-color: #e3e3e3;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .university-list li {
+    overflow: hidden;
+    border-radius: 10px;
+    color: #202020;
+    background-color: #e3e3e3;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .university-list li:hover {
+    background-color: #f1f1f1;
+  }
