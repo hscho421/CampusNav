@@ -90,4 +90,5 @@
   
   .university-list li:hover {
     background-color: #f1f1f1;
+    transition: ease-in-out 0.1s;
   }
