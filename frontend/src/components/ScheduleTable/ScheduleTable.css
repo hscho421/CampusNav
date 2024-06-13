@@ -27,6 +27,10 @@ select {
     outline: none;
 }
 
+select:hover {
+    cursor: pointer;
+}
+
 input {
     background: none;
     border: none;

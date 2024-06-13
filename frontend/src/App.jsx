@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
 import Footer from './components/Footer/Footer';
 import UniversityInput from './components/UniversityInput/UniversityInput';
 import ScheduleTable from './components/ScheduleTable/ScheduleTable';
-import TimeTable from './components/TimeTable/TimeTable';  
+import TimeTable from './components/TimeTable/TimeTable';
 import './App.css';
 
 function App() {
