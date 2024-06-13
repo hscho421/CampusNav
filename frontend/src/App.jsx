@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
 import Footer from './components/Footer/Footer';
@@ -9,25 +9,20 @@ import './App.css';
 
 function App() {
   const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable
-  const [courses, setCourses] = useState([]);  // State to hold the courses
-  const [showTimetable, setShowTimetable] = useState(false);  // State to control the visibility of the TimeTable
+  const [courses, setCourses] = useState([]); // State to hold the courses
+  const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
 
   const handleGetStarted = () => {
     setState(1);
   };
 
-  const handleUniversitySubmit = (newCourses) => {
-    setCourses(newCourses);  // Update courses with new data
+  const handleUniversitySubmit = (university) => {
+    setSelectedUniversity(university);
     setState(2);
   };
 
   const goHome = () => {
     setState(0);
-  };
-
-  const handleViewTimetable = () => {
-    console.log("Courses to be displayed in timetable:", courses);
-    setShowTimetable(true);  // Show the timetable when the button is pressed
   };
 
   return (
@@ -39,6 +34,9 @@ function App() {
         {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
         {state === 2 && (
           <div className='content-container'>
+            <div className='box'>
+              <h1>{selectedUniversity}</h1>
+            </div>
             <div className='box'>
               <ScheduleTable setCourses={setCourses} />
             </div>

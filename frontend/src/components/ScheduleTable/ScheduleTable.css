@@ -31,6 +31,7 @@ input {
     background: none;
     border: none;
     outline: none;
+    text-align: center;
 }
 .time-select {
     outline: none;

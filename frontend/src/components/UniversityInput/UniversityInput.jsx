@@ -11,9 +11,10 @@ const UniversityInput = ({ onSubmit }) => {
 
     // Fetch the university names when the component mounts
     useEffect(() => {
-        fetch('../../../public/universitiesList.json')  // Adjust the path accordingly
+        fetch('/universitiesList.json')  // Adjust the path accordingly
             .then(response => response.json())
-            .then(data => setUniversities(data));
+            .then(data => setUniversities(data))
+            .catch(error => console.error('Error fetching universities:', error));
     }, []);
 
     // Update the filtered universities based on the search term
@@ -38,7 +39,7 @@ const UniversityInput = ({ onSubmit }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit(university);
+        onSubmit(university); // Pass the selected university to the parent component
     };
 
     return (
@@ -67,7 +68,7 @@ const UniversityInput = ({ onSubmit }) => {
                         </div>
                     )}
                     <button type="submit" className="submit-university">
-                        Submit
+                        {t('submit')}
                     </button>
                 </form>
             </div>
