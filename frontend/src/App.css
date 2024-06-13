@@ -46,3 +46,13 @@ main {
 .box {
   padding: 10px;
 }
+
+.box h1 {
+  border: none;
+  color: #202020;
+  background-color: #d1d1d1;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: black 0 0 10px;
+  z-index: 1;
+}
