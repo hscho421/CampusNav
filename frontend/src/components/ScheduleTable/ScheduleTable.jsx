@@ -54,12 +54,12 @@ const ScheduleTable = ({ setCourses }) => {
       <table className="schedule-table">
         <thead>
           <tr>
-            <th>{t('Weekday')}</th>
-            <th>{t('Course Name')}</th>
-            <th>{t('Location')}</th>
-            <th>{t('Start Time')}</th>
-            <th>{t('End Time')}</th>
-            <th>{t('Actions')}</th>
+            <th>{t('weekday')}</th>
+            <th>{t('courseName')}</th>
+            <th>{t('location')}</th>
+            <th>{t('startTime')}</th>
+            <th>{t('endTime')}</th>
+            <th>{t('actions')}</th>
           </tr>
         </thead>
         <tbody>
@@ -68,11 +68,11 @@ const ScheduleTable = ({ setCourses }) => {
               <td>
                 <select name="weekday" value={course.weekday} onChange={(event) => handleChange(index, event)}>
                   <option value="">{t('--')}</option>
-                  <option value="Monday">{t('Monday')}</option>
-                  <option value="Tuesday">{t('Tuesday')}</option>
-                  <option value="Wednesday">{t('Wednesday')}</option>
-                  <option value="Thursday">{t('Thursday')}</option>
-                  <option value="Friday">{t('Friday')}</option>
+                  <option value="Monday">{t('monday')}</option>
+                  <option value="Tuesday">{t('tuesday')}</option>
+                  <option value="Wednesday">{t('wednesday')}</option>
+                  <option value="Thursday">{t('thursday')}</option>
+                  <option value="Friday">{t('friday')}</option>
                 </select>
               </td>
               <td>
@@ -81,7 +81,7 @@ const ScheduleTable = ({ setCourses }) => {
                   name="courseName"
                   value={course.courseName}
                   onChange={(event) => handleChange(index, event)}
-                  placeholder={t('Course Name')}
+                  placeholder={t('courseName')}
                 />
               </td>
               <td>
@@ -90,7 +90,7 @@ const ScheduleTable = ({ setCourses }) => {
                   name="location"
                   value={course.location}
                   onChange={(event) => handleChange(index, event)}
-                  placeholder={t('Location')}
+                  placeholder={t('location')}
                 />
               </td>
               <td>
@@ -124,7 +124,7 @@ const ScheduleTable = ({ setCourses }) => {
                     onChange={(event) => handleChange(index, event)}
                     className="time-select"
                   >
-                    <option value="">{t('--')}</option>
+                    <option value="">--</option>
                     {generateOptions(24)}
                   </select>
                   :
@@ -134,7 +134,7 @@ const ScheduleTable = ({ setCourses }) => {
                     onChange={(event) => handleChange(index, event)}
                     className="time-select"
                   >
-                    <option value="">{t('--')}</option>
+                    <option value="">--</option>
                     {generateOptions(60)}
                   </select>
                 </div>

@@ -9,6 +9,25 @@
   "description": "캠퍼스에서 제일 좋아하는 장소로 가는 가장 빠른 경로를 찾아보세요. CampusNav는 여러분의 길을 간단하고 빠르게 찾아갈 수 있게 해줍니다.",
 
   "termsOfConditions": "이용약관",
-  "privacyPolicy": "개인정보처리방침"
+  "privacyPolicy": "개인정보처리방침",
+
+  "enterUniversity": "학교 이름을 입력해주세요",
+  "universityNotFound": "학교 이름을 찾을 수 없습니다. 다시 입력해주세요.",
+  "enterUniversityMessage": "아래 목록에 학교가 표시되지 않으면 아직 학교에서 단일 로그인이 활성화되지 않았음을 의미합니다.",
+  "universityPlaceholder": "학교 영문 이름 (예: Seoul National University)",
+  "submit": "제출",
+
+  "weekday": "요일",
+  "courseName": "수업 이름",
+  "location": "장소",
+  "startTime": "시작 시간",
+  "endTime": "종료 시간",
+  "actions": "동작",
+
+  "monday": "월요일",
+  "tuesday": "화요일",
+  "wednesday": "수요일",  
+  "thursday": "목요일",
+  "friday": "금요일"
   }
  

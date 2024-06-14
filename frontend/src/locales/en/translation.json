@@ -12,7 +12,22 @@
   "privacyPolicy": "Terms of Conditions",
 
   "enterUniversity": "Enter Your School Below",
+  "universtiyNotFound": "University not found",
   "enterUniversityMessage": "If you do not see your school in this list, that means we do not have single sign-on enabled at your school yet.",
-  "universityPlaceholder": "Search for your school (e.g. Seoul National University)"
+  "universityPlaceholder": "Search for your school (e.g. Seoul National University)",
+  "submit": "Submit",
+
+  "weekday": "Day",
+  "courseName": "Course Name",
+  "location": "Location",
+  "startTime": "Start Time",
+  "endTime": "End Time",
+  "actions": "Actions",
+
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",  
+  "thursday": "Thursday",
+  "friday": "Friday"
   }
   
