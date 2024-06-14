@@ -11,7 +11,7 @@ const UniversityInput = ({ onSubmit }) => {
 
     // Fetch the university names when the component mounts
     useEffect(() => {
-        fetch('/universitiesList.json')  // Adjust the path accordingly
+        fetch('/universitiesList.json')
             .then(response => response.json())
             .then(data => setUniversities(data))
             .catch(error => console.error('Error fetching universities:', error));
@@ -27,8 +27,9 @@ const UniversityInput = ({ onSubmit }) => {
     }, [searchTerm, universities]);
 
     const handleSearchChange = (event) => {
-        setSearchTerm(event.target.value);
-        setUniversity(event.target.value);
+        const value = event.target.value;
+        setSearchTerm(value);
+        setUniversity(value);
     };
 
     const handleSelectUniversity = (univ) => {
@@ -39,7 +40,11 @@ const UniversityInput = ({ onSubmit }) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        onSubmit(university); // Pass the selected university to the parent component
+        if (universities.includes(university)) {
+            onSubmit(university); // Pass the selected university to the parent component
+        } else {
+            alert(t('universityNotFound')); // Display an alert if the university is not in the list
+        }
     };
 
     return (
@@ -60,7 +65,7 @@ const UniversityInput = ({ onSubmit }) => {
                         <div className="dropdown">
                             <ul className="university-list">
                                 {filteredUniversities.map((univ, index) => (
-                                    <li key={index} onClick={() => handleSelectUniversity(univ)}>
+                                    <li key={index} onMouseDown={() => handleSelectUniversity(univ)}>
                                         {univ}
                                     </li>
                                 ))}
