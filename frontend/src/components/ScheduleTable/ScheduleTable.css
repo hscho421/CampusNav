@@ -1,9 +1,16 @@
+.schedule-table-container {
+    max-height: 30vh;
+    overflow-y: auto;
+    z-index: 1000;
+    box-shadow: black 0 0 10px;
+    border-radius: 10px;
+
+}
 table {
     border-collapse: collapse;
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: black 0 0 10px;
     width: 100%;
 }
 
