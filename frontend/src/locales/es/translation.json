@@ -9,6 +9,25 @@
   "description": "Descubra las rutas más rápidas a sus clases, dormitorios y lugares favoritos en el campus. CampusNav hace que orientarse sea sencillo y sin estrés.",
 
   "termsOfConditions": "Términos y condiciones",
-  "privacyPolicy": "Política de privacidad"
+  "privacyPolicy": "Política de privacidad",
+
+  "enterUniversity": "Ingrese su escuela a continuación",
+  "universtiyNotFound": "Universidad no encontrada",
+  "enterUniversityMessage": "Si no ve su escuela en esta lista, eso significa que aún no tenemos habilitado el inicio de sesión único en su escuela.",
+  "universityPlaceholder": "Busque su escuela (por ejemplo, la Universidad Nacional de Seúl)",
+  "submit": "Entregar",
+
+  "weekday": "Día",
+  "courseName": "Nombre del curso",
+  "location": "Ubicación",
+  "startTime": "Hora de inicio",
+  "endTime": "Hora de finalización",
+  "actions": "Comportamiento",
+
+  "monday": "Lunes",
+  "tuesday": "Martes",
+  "wednesday": "Miércoles",  
+  "thursday": "Jueves",
+  "friday": "Viernes"
   }
  

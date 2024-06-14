@@ -9,6 +9,25 @@
   "description": "Découvrez les itinéraires les plus rapides vers vos cours, vos dortoirs et vos endroits préférés sur le campus. CampusNav vous permet de vous repérer facilement et sans stress.",
 
   "termsOfConditions": "Politique de confidentialité",
-  "privacyPolicy": "Conditions générales"
+  "privacyPolicy": "Conditions générales",
+
+  "enterUniversity": "Entrez votre école ci-dessous",
+  "universtiyNotFound": "University not found",
+  "enterUniversityMessage": "Si vous ne voyez pas votre école dans cette liste, cela signifie que l'authentification unique n'est pas encore activée dans votre école.",
+  "universityPlaceholder": "Recherchez votre école en anglais (par exemple Seoul National University)",
+  "submit": "Soumettre",
+
+  "weekday": "Jour",
+  "courseName": "Nom du cours",
+  "location": "Emplacement",
+  "startTime": "Heure de début",
+  "endTime": "Heure de fin",
+  "actions": "Actions",
+
+  "monday": "Lundi",
+  "tuesday": "Merdi",
+  "wednesday": "Mecredi",  
+  "thursday": "Jeudi",
+  "friday": "Vendredi"
   }
   

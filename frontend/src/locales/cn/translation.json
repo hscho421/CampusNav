@@ -9,5 +9,24 @@
   "description": "寻找去校园最喜欢地点的最快路线。 CampusNav可以让大家简单快速地找到自己的路。",
 
   "termsOfConditions": "使用条款",
-  "privacyPolicy": "个人信息处理方针"
+  "privacyPolicy": "个人信息处理方针",
+
+  "enterUniversity": "在下面进入您的学校",
+  "universtiyNotFound": "大学未找到",
+  "enterUniversityMessage": "如果您没有在此列表中看到您的学校，这意味着我们还没有在您的学校启用单点登录。",
+  "universityPlaceholder": "搜索您的学校（例子:Seoul National University）",
+  "submit": "提出",
+
+  "weekday": "星期几",
+  "courseName": "课名",
+  "location": "场所",
+  "startTime": "开始时间",
+  "endTime": "结束时间",
+  "actions": "动作",
+
+  "monday": "星期一",
+  "tuesday": "星期二",
+  "wednesday": "星期三",  
+  "thursday": "星期四",
+  "friday": "星期五"
   }
