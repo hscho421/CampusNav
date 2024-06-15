@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import UniversityInput from './components/UniversityInput/UniversityInput';
 import ScheduleTable from './components/ScheduleTable/ScheduleTable';
 import TimeTable from './components/TimeTable/TimeTable';
+import Map from './components/Map/Map'
 import './App.css';
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
         {state === 0 && <HeroSection onGetStarted={handleGetStarted} />}
         {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
         {state === 2 && (
+          <>
           <div className='content-container'>
             <div className='box'>
               <h1>{selectedUniversity}</h1>
@@ -44,6 +46,10 @@ function App() {
               <TimeTable courses={courses} />
             </div>
           </div>
+          <div className='map'>
+          <Map />
+        </div>
+        </>
         )}
       </main>
       <Footer />
