@@ -12,7 +12,7 @@
   "privacyPolicy": "個人情報処理方針",
 
   "enterUniversity": "学校名を入力してください",
-  "universtiyNotFound": "学校名が見つかりません。 もう一度入力してください。",
+  "universityNotFound": "学校名が見つかりません。 もう一度入力してください。",
   "enterUniversityMessage": "以下のリストに学校が表示されない場合は、まだ学校で単一のログインが有効になっていないことを意味します。",
   "universityPlaceholder": "学校の英語名(例:Seoul National University)",
   "submit": "提出",

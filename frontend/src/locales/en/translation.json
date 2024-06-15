@@ -12,7 +12,7 @@
   "privacyPolicy": "Terms of Conditions",
 
   "enterUniversity": "Enter Your School Below",
-  "universtiyNotFound": "University not found",
+  "universityNotFound": "University not found",
   "enterUniversityMessage": "If you do not see your school in this list, that means we do not have single sign-on enabled at your school yet.",
   "universityPlaceholder": "Search for your school (e.g. Seoul National University)",
   "submit": "Submit",

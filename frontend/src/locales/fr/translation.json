@@ -12,7 +12,7 @@
   "privacyPolicy": "Conditions générales",
 
   "enterUniversity": "Entrez votre école ci-dessous",
-  "universtiyNotFound": "University not found",
+  "universityNotFound": "University not found",
   "enterUniversityMessage": "Si vous ne voyez pas votre école dans cette liste, cela signifie que l'authentification unique n'est pas encore activée dans votre école.",
   "universityPlaceholder": "Recherchez votre école en anglais (par exemple Seoul National University)",
   "submit": "Soumettre",

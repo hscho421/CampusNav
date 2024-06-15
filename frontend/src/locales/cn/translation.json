@@ -12,7 +12,7 @@
   "privacyPolicy": "个人信息处理方针",
 
   "enterUniversity": "在下面进入您的学校",
-  "universtiyNotFound": "大学未找到",
+  "universityNotFound": "大学未找到",
   "enterUniversityMessage": "如果您没有在此列表中看到您的学校，这意味着我们还没有在您的学校启用单点登录。",
   "universityPlaceholder": "搜索您的学校（例子:Seoul National University）",
   "submit": "提出",

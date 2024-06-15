@@ -12,7 +12,7 @@
   "privacyPolicy": "Política de privacidad",
 
   "enterUniversity": "Ingrese su escuela a continuación",
-  "universtiyNotFound": "Universidad no encontrada",
+  "universityNotFound": "Universidad no encontrada",
   "enterUniversityMessage": "Si no ve su escuela en esta lista, eso significa que aún no tenemos habilitado el inicio de sesión único en su escuela.",
   "universityPlaceholder": "Busque su escuela (por ejemplo, la Universidad Nacional de Seúl)",
   "submit": "Entregar",
