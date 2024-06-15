@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import './MapStyle.css';
 
 const Map = ({ university }) => {
   const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
   const [error, setError] = useState('');
+  const mapRef = useRef(null); // Create a ref for the map
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -26,6 +27,7 @@ const Map = ({ university }) => {
         const location = data.results[0].geometry.location;
         console.log('Geocoded location:', location); // Log the geocoded location
         setCenter({ lat: location.lat, lng: location.lng });
+        fitBoundsToLocation(data.results[0].geometry.viewport);
         setError('');
       } else {
         console.error('Geocoding API error:', data);
@@ -34,6 +36,15 @@ const Map = ({ university }) => {
     } catch (error) {
       console.error('Error fetching geocoding data:', error);
       setError('Error fetching geocoding data.');
+    }
+  };
+
+  const fitBoundsToLocation = (viewport) => {
+    if (mapRef.current) {
+      const bounds = new window.google.maps.LatLngBounds();
+      bounds.extend(new window.google.maps.LatLng(viewport.northeast.lat, viewport.northeast.lng));
+      bounds.extend(new window.google.maps.LatLng(viewport.southwest.lat, viewport.southwest.lng));
+      mapRef.current.fitBounds(bounds);
     }
   };
 
@@ -52,6 +63,7 @@ const Map = ({ university }) => {
         mapContainerClassName="map-container"
         center={center}
         zoom={15}
+        onLoad={map => mapRef.current = map} // Set the map ref
       >
       </GoogleMap>
     </div>

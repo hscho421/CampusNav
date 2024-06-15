@@ -4,10 +4,10 @@ import './ScheduleTable.css';
 
 // Define default values for each row
 const defaultCourses = [
-  { weekday: 'Monday', courseName: 'ECE 220', location: 'ECEB 101', startHour: '11', startMinute: '00', endHour: '11', endMinute: '50' },
-  { weekday: 'Monday', courseName: 'PHYS 212', location: 'Loomis 141', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
-  { weekday: 'Monday', courseName: 'MATH 257', location: 'CIF 4011', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
-  { weekday: 'Monday', courseName: 'MATH 285', location: 'CIF 0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Monday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '101',startHour: '11', startMinute: '00', endHour: '11', endMinute: '50' },
+  { weekday: 'Monday', courseName: 'PHYS 212', buildingName: 'Loomis', roomNumber: '141', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
+  { weekday: 'Monday', courseName: 'MATH 257', buildingName: 'CIF', roomNumber: '4011', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Monday', courseName: 'MATH 285', buildingName: 'CIF', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
 ];
 
 const ScheduleTable = ({ setCourses }) => {
@@ -27,7 +27,7 @@ const ScheduleTable = ({ setCourses }) => {
   };
 
   const addRow = () => {
-    const newCourse = { weekday: '', courseName: '', location: '', startHour: '', startMinute: '', endHour: '', endMinute: '' };
+    const newCourse = { weekday: '', courseName: '', buildingName: '', roomNumber: '', startHour: '', startMinute: '', endHour: '', endMinute: '' };
     const updatedCourses = [...courses, newCourse];
     updateCourses(updatedCourses);
     setCourses(updatedCourses);
@@ -56,7 +56,8 @@ const ScheduleTable = ({ setCourses }) => {
           <tr>
             <th>{t('weekday')}</th>
             <th>{t('courseName')}</th>
-            <th>{t('location')}</th>
+            <th>{t('buildingName')}</th>
+            <th>{t('roomNumber')}</th>
             <th>{t('startTime')}</th>
             <th>{t('endTime')}</th>
             <th>{t('actions')}</th>
@@ -87,8 +88,17 @@ const ScheduleTable = ({ setCourses }) => {
               <td>
                 <input
                   type="text"
-                  name="location"
-                  value={course.location}
+                  name="buildingName"
+                  value={course.buildingName}
+                  onChange={(event) => handleChange(index, event)}
+                  placeholder={t('location')}
+                />
+              </td>
+              <td>
+                <input
+                  type="text"
+                  name="roomNumber"
+                  value={course.roomNumber}
                   onChange={(event) => handleChange(index, event)}
                   placeholder={t('location')}
                 />

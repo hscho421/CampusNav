@@ -22,7 +22,7 @@ const TimeTable = ({ courses }) => {
             <h3 className='day'>{day}</h3>
             {Array.isArray(courses) && sortCourses(courses.filter(course => course.weekday === day)).map((course, index) => (
               <div key={index} className="course">
-                <p>{course.courseName} ({course.location})</p>
+                <p>{course.courseName} ({course.buildingName} {course.roomNumber})</p>
                 <p>{course.startHour}:{course.startMinute} - {course.endHour}:{course.endMinute}</p>
               </div>
             ))}
