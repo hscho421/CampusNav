@@ -57,10 +57,10 @@ const Map = ({ university }) => {
   }
 
   return (
-    <div>
+    <div className='map-div'>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <GoogleMap
-        mapContainerClassName="map-container"
+        mapContainerClassName="map-div"
         center={center}
         zoom={15}
         onLoad={map => mapRef.current = map} // Set the map ref

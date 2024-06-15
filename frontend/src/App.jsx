@@ -41,11 +41,13 @@ const App = () => {
             <div className="box">
               <ScheduleTable setCourses={setCourses} />
             </div>
-            <div className="box">
-              <TimeTable courses={courses} />
+            <div className='inner-box-container'>
+              <div className="inner-box">
+                <TimeTable courses={courses} />
+              </div>
+              <div className="inner-box">
+                <Map university={selectedUniversity} />
             </div>
-            <div className="box">
-              <Map university={selectedUniversity} />
             </div>
           </div>
         )}
