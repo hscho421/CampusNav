@@ -4,10 +4,27 @@ import './ScheduleTable.css';
 
 // Define default values for each row
 const defaultCourses = [
-  { weekday: 'Monday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '101',startHour: '11', startMinute: '00', endHour: '11', endMinute: '50' },
-  { weekday: 'Monday', courseName: 'PHYS 212', buildingName: 'Loomis', roomNumber: '141', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
+  // { weekday: 'Monday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '101',startHour: '11', startMinute: '00', endHour: '11', endMinute: '50' },
+  // { weekday: 'Monday', courseName: 'PHYS 212', buildingName: 'Loomis', roomNumber: '141', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
+  // { weekday: 'Monday', courseName: 'MATH 257', buildingName: 'CIF', roomNumber: '4011', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+  // { weekday: 'Monday', courseName: 'MATH 285', buildingName: 'CIF', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
+
+  // Test values
+  { weekday: 'Monday', courseName: 'MATH 285', buildingName: 'CIF', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '14', endMinute: '50' },
   { weekday: 'Monday', courseName: 'MATH 257', buildingName: 'CIF', roomNumber: '4011', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
-  { weekday: 'Monday', courseName: 'MATH 285', buildingName: 'CIF', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Tuesday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '001', startHour: '11', startMinute: '00', endHour: '12', endMinute: '50' },
+  { weekday: 'Tuesday', courseName: 'PHYS 212', buildingName: 'Loomis', roomNumber: '141', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Tuesday', courseName: 'PHYS 212 LAB', buildingName: 'CIF', roomNumber: '4011', startHour: '14', startMinute: '00', endHour: '15', endMinute: '50' },
+  { weekday: 'Tuesday', courseName: 'MATH 257', buildingName: 'Engineering Hall', roomNumber: '001', startHour: '16', startMinute: '00', endHour: '16', endMinute: '50' },
+  { weekday: 'Wednesday', courseName: 'MATH 285', buildingName: 'CIF', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '14', endMinute: '50' },
+  { weekday: 'Wednesday', courseName: 'MATH 257', buildingName: 'CIF', roomNumber: '4011', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Thursday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '001', startHour: '11', startMinute: '00', endHour: '12', endMinute: '50' },
+  { weekday: 'Thursday', courseName: 'PHYS 212', buildingName: 'Loomis', roomNumber: '141', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Thursday', courseName: 'PHYS 212 LAB', buildingName: 'CIF', roomNumber: '4011', startHour: '14', startMinute: '00', endHour: '15', endMinute: '50' },
+  { weekday: 'Friday', courseName: 'ECE 220 LAB', buildingName: 'ECEB', roomNumber: '001', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
+  { weekday: 'Friday', courseName: 'MATH 285', buildingName: 'CIF', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Friday', courseName: 'MATH 257 LAB', buildingName: 'ONLINE', roomNumber: '', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+
 ];
 
 const ScheduleTable = ({ setCourses }) => {
