@@ -34,7 +34,6 @@ function App() {
         {state === 0 && <HeroSection onGetStarted={handleGetStarted} />}
         {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
         {state === 2 && (
-          <>
           <div className='content-container'>
             <div className='box'>
               <h1>{selectedUniversity}</h1>
@@ -45,11 +44,10 @@ function App() {
             <div className='box'>
               <TimeTable courses={courses} />
             </div>
+            <div className='box'>
+              <Map />
+            </div>
           </div>
-          <div className='map'>
-          <Map />
-        </div>
-        </>
         )}
       </main>
       <Footer />
