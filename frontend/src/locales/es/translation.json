@@ -19,7 +19,8 @@
 
   "weekday": "Día",
   "courseName": "Nombre del curso",
-  "location": "Ubicación",
+  "buildingName": "Edificio",
+  "roomNumber": "Número de habitación",
   "startTime": "Hora de inicio",
   "endTime": "Hora de finalización",
   "actions": "Comportamiento",

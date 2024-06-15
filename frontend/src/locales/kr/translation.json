@@ -19,7 +19,8 @@
 
   "weekday": "요일",
   "courseName": "수업 이름",
-  "location": "장소",
+  "buildingName": "건물",
+  "roomNumber": "방 번호",
   "startTime": "시작 시간",
   "endTime": "종료 시간",
   "actions": "동작",

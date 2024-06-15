@@ -19,7 +19,8 @@
 
   "weekday": "曜日",
   "courseName": "授業名",
-  "location": "場所",
+  "buildingName": "建物",
+  "roomNumber": "部屋番号",
   "startTime": "開始時間",
   "endTime": "終了時間",
   "actions": "動作",

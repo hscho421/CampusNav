@@ -19,7 +19,8 @@
 
   "weekday": "Day",
   "courseName": "Course Name",
-  "location": "Location",
+  "buildingName": "Building",
+  "roomNumber": "Room Number",
   "startTime": "Start Time",
   "endTime": "End Time",
   "actions": "Actions",
