@@ -3,7 +3,7 @@ import { GoogleMap, useLoadScript, DirectionsRenderer, InfoWindow } from '@react
 import { useTranslation } from 'react-i18next';
 import './RouteMap.css';
 
-const RouteMap = ({ route, routeInfo }) => {
+const RouteMap = ({ route, routeInfo, universityCoords }) => {
   const { t } = useTranslation();
   const mapRef = useRef(null); // Create a ref for the map
   const directionsRendererRef = useRef(null); // Create a ref for the DirectionsRenderer
@@ -37,7 +37,7 @@ const RouteMap = ({ route, routeInfo }) => {
     <div className='map-div'>
       <GoogleMap
         mapContainerClassName="map-div"
-        center={{ lat: 40.110588, lng: -88.228339 }} // Default center
+        center={universityCoords} // Center the map based on the university coordinates
         zoom={15}
         onLoad={onLoad} // Use useCallback for onLoad
       >

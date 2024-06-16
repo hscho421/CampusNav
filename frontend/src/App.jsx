@@ -20,13 +20,34 @@ const App = () => {
   const [roomNumber, setRoomNumber] = useState(null); // Define roomNumber state
   const [route, setRoute] = useState(null); // State to hold the route data
   const [routeInfo, setRouteInfo] = useState(null); // State to hold the route information
+  const [universityCoords, setUniversityCoords] = useState({ lat: 40.110588, lng: -88.228339 }); // Default coordinates
 
   const handleGetStarted = () => {
     setState(1);
   };
 
-  const handleUniversitySubmit = (university) => {
+  const geocodeAddress = async (address) => {
+    const geocoder = new window.google.maps.Geocoder();
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ address }, (results, status) => {
+        if (status === 'OK' && results[0]) {
+          const { lat, lng } = results[0].geometry.location;
+          resolve({ lat: lat(), lng: lng() });
+        } else {
+          reject('Geocode was not successful for the following reason: ' + status);
+        }
+      });
+    });
+  };
+
+  const handleUniversitySubmit = async (university) => {
     setSelectedUniversity(university);
+    try {
+      const coords = await geocodeAddress(university);
+      setUniversityCoords(coords);
+    } catch (error) {
+      console.error(error);
+    }
     setState(2);
   };
 
@@ -111,7 +132,7 @@ const App = () => {
                 <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
               </div>
               <div className="inner-box-2">
-                <RouteMap route={route} routeInfo={routeInfo} />
+                <RouteMap route={route} routeInfo={routeInfo} universityCoords={universityCoords} /> {/* Pass the universityCoords */}
               </div>
             </div>
           </div>
