@@ -1,0 +1,23 @@
+.available-time-table-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #D1D1D1;
+    height: 100%;
+  }
+  
+  .available-time-table {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .gap {
+    background-color: red;  
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    z-index: 2;
+    box-shadow: #00000058 0 0 10px;
+  }
+  

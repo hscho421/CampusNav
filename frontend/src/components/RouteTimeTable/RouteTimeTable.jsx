@@ -1,5 +1,5 @@
 import React from 'react';
-import './AvailableTimeTable.css';
+import './RouteTimeTable.css';
 
 const AvailableTimeTable = ({ courses }) => {
   console.log("Courses received in AvailableTimeTable:", courses);
@@ -20,11 +20,16 @@ const AvailableTimeTable = ({ courses }) => {
       const currentEnd = parseInt(courses[i].endHour) * 60 + parseInt(courses[i].endMinute);
       const nextStart = parseInt(courses[i + 1].startHour) * 60 + parseInt(courses[i + 1].startMinute);
       if (nextStart > currentEnd) {
+        const gapMinutes = nextStart - currentEnd;
+        const gapHours = Math.floor(gapMinutes / 60);
+        const remainingMinutes = gapMinutes % 60;
         gaps.push({
-          startHour: Math.floor(currentEnd / 60),
-          startMinute: currentEnd % 60,
-          endHour: Math.floor(nextStart / 60),
-          endMinute: nextStart % 60,
+          startHour: Math.floor(currentEnd / 60).toString().padStart(2, '0'),
+          startMinute: (currentEnd % 60).toString().padStart(2, '0'),
+          endHour: Math.floor(nextStart / 60).toString().padStart(2, '0'),
+          endMinute: (nextStart % 60).toString().padStart(2, '0'),
+          gapHours: gapHours,
+          gapMinutes: remainingMinutes.toString().padStart(2, '0')
         });
       }
     }
@@ -43,12 +48,12 @@ const AvailableTimeTable = ({ courses }) => {
                 <React.Fragment key={index}>
                   <div className="course">
                     <p>{course.courseName}</p>
-                    <p>{course.startHour}:{course.startMinute} - {course.endHour}:{course.endMinute}</p>
+                    <p>{course.startHour.toString().padStart(2, '0')}:{course.startMinute.toString().padStart(2, '0')} - {course.endHour.toString().padStart(2, '0')}:{course.endMinute.toString().padStart(2, '0')}</p>
                   </div>
                   {index < sortedCourses.length - 1 && (
                     <div className="gap">
                       <p>Available Time</p>
-                      <p>{gaps[index].startHour}:{gaps[index].startMinute} - {gaps[index].endHour}:{gaps[index].endMinute}</p>
+                      <p>{gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
                     </div>
                   )}
                 </React.Fragment>

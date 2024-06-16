@@ -5,6 +5,7 @@ import Footer from './components/Footer/Footer';
 import UniversityInput from './components/UniversityInput/UniversityInput';
 import ScheduleTable from './components/ScheduleTable/ScheduleTable';
 import TimeTable from './components/TimeTable/TimeTable';
+import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable'; // Import the AvailableTimeTable component
 import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
 import './App.css';
@@ -69,11 +70,11 @@ const App = () => {
         {state === 3 && (
           <div className="content-container-2">
             <div className="box-2">
-              <h1>{t("routeCalcuation")}</h1>
+              <h1>{t('routeCalcuation')}</h1>
             </div>
             <div className="inner-box-container-2">
               <div className="inner-box-2">
-                <TimeTable courses={courses} setBuildingName={setBuildingName} setRoomNumber={setRoomNumber} /> {/* Pass setRoomNumber */}
+                <AvailableTimeTable courses={courses} /> {/* Use the new AvailableTimeTable component */}
               </div>
               <div className="inner-box-2">
                 <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
