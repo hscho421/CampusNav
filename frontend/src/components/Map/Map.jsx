@@ -1,9 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
-import { GoogleMap, useLoadScript } from '@react-google-maps/api';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
+import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './MapStyle.css';
 
-const Map = ({ university }) => {
+const Map = ({ university, buildingName }) => {
   const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
+  const [markerPosition, setMarkerPosition] = useState(null);
+  const [selectedLocation, setSelectedLocation] = useState(null);
   const [error, setError] = useState('');
   const mapRef = useRef(null); // Create a ref for the map
 
@@ -13,28 +15,39 @@ const Map = ({ university }) => {
 
   useEffect(() => {
     if (university && isLoaded) {
-      console.log('Geocoding university:', university); // Log the university name
-      geocodeUniversity(university);
+      geocodeLocation(university);
     }
   }, [university, isLoaded]);
 
-  const geocodeUniversity = async (universityName) => {
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(universityName)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`;
+  useEffect(() => {
+    if (buildingName && isLoaded) {
+      geocodeLocation(`${buildingName}, ${university}`);
+    }
+  }, [buildingName, isLoaded]);
+
+  const geocodeLocation = async (locationName) => {
+    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationName)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`;
     try {
       const response = await fetch(geocodeUrl);
       const data = await response.json();
       if (data.status === 'OK') {
         const location = data.results[0].geometry.location;
-        console.log('Geocoded location:', location); // Log the geocoded location
+        console.log('Geocoded location:', location); // Debug log
         setCenter({ lat: location.lat, lng: location.lng });
-        fitBoundsToLocation(data.results[0].geometry.viewport);
+        setMarkerPosition({ lat: location.lat, lng: location.lng });
         setError('');
+        if (mapRef.current) {
+          mapRef.current.panTo({ lat: location.lat, lng: location.lng });
+          if (buildingName) {
+            mapRef.current.setZoom(18);
+          } else {
+            fitBoundsToLocation(data.results[0].geometry.viewport);
+          }
+        }
       } else {
-        console.error('Geocoding API error:', data);
         setError(`Geocoding error: ${data.status}`);
       }
     } catch (error) {
-      console.error('Error fetching geocoding data:', error);
       setError('Error fetching geocoding data.');
     }
   };
@@ -46,6 +59,18 @@ const Map = ({ university }) => {
       bounds.extend(new window.google.maps.LatLng(viewport.southwest.lat, viewport.southwest.lng));
       mapRef.current.fitBounds(bounds);
     }
+  };
+
+  const onLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
+
+  const handleMarkerClick = () => {
+    setSelectedLocation(markerPosition);
+  };
+
+  const handleInfoWindowClose = () => {
+    setSelectedLocation(null);
   };
 
   if (loadError) {
@@ -63,8 +88,26 @@ const Map = ({ university }) => {
         mapContainerClassName="map-div"
         center={center}
         zoom={15}
-        onLoad={map => mapRef.current = map} // Set the map ref
+        onLoad={onLoad} // Use useCallback for onLoad
       >
+        {markerPosition && (
+          <Marker 
+            position={markerPosition} 
+            onClick={handleMarkerClick} 
+          />
+        )}
+        {selectedLocation && (
+          <InfoWindow
+            position={selectedLocation}
+            onCloseClick={handleInfoWindowClose}
+          >
+            <div className='location-info'>
+              <h2>Location Information</h2>
+              <p>{buildingName}</p>
+              <p>{university}</p>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </div>
   );

@@ -31,6 +31,7 @@
 .dropdown li {
   padding: 8px 20px;
   cursor: pointer;
+  color: #E2E2E2;
 }
 
 .dropdown li:hover {

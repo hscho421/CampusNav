@@ -28,6 +28,7 @@
 }
 
 .nav a {
+  color: #E2E2E2;
   margin: 0 10px;
   text-decoration: none;
   padding: 10px;
@@ -36,6 +37,7 @@
 }
 
 .nav svg {
+  fill: #E2E2E2;
   margin-left: 10px;
   width: 24px;
   height: 24px;

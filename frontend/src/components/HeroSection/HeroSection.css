@@ -18,10 +18,12 @@
 
 .hero-content h1 {
   font-size: 4rem;
+  color: #E2E2E2;
 }
 
 .hero-content p {
   font-size: 1rem;
+  color: #E2E2E2;
 }
 
 .main-button {
@@ -35,11 +37,13 @@
   background-color: #202020;
   margin-top: 20px;
   align-items: center;
+  color: #E2E2E2;
 }
 
 .main-button svg {
   margin-left: 10px;
   background-color: #202020;
+  fill: #E2E2E2;
 }
 
 .hero-image {

@@ -12,6 +12,7 @@ const App = () => {
   const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable
   const [courses, setCourses] = useState([]); // State to hold the courses
   const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
+  const [buildingName, setBuildingName] = useState(null);
 
   const handleGetStarted = () => {
     setState(1);
@@ -43,11 +44,11 @@ const App = () => {
             </div>
             <div className='inner-box-container'>
               <div className="inner-box">
-                <TimeTable courses={courses} />
+                <TimeTable courses={courses} setBuildingName={setBuildingName} />
               </div>
               <div className="inner-box">
-                <Map university={selectedUniversity} />
-            </div>
+                <Map university={selectedUniversity} buildingName={buildingName} />
+              </div>
             </div>
           </div>
         )}

@@ -6,7 +6,6 @@
   }
 * {
   font-family: "Montserrat", sans-serif;
-  color: #E2E2E2;
   margin: 0;
   word-break: keep-all; /* Prevent line breaks within words */
 }
@@ -80,4 +79,5 @@ main {
   border-radius: 10px;
   z-index: 1;
   box-shadow: black 0 0 15px;
+  color: red;
 }

@@ -17,6 +17,7 @@
     
     .university-box h1 {
         font-size: 3rem;
+        color: #E2E2E2;
     }
     
     .university-box p {
@@ -37,6 +38,7 @@
         box-sizing: border-box;
         margin-bottom: 30px;
         outline: none;
+        color: #E2E2E2;
     }
     
     .submit-university{
