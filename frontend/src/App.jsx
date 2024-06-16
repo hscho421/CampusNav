@@ -10,8 +10,8 @@ import Map from './components/Map/Map';
 import './App.css';
 
 const App = () => {
-  const { t } = useTranslation()
-  const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable
+  const { t } = useTranslation();
+  const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable, 3: Route Calculation
   const [courses, setCourses] = useState([]); // State to hold the courses
   const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
   const [buildingName, setBuildingName] = useState(null);
@@ -30,9 +30,15 @@ const App = () => {
     setState(0);
   };
 
+  const getRoute = () => {
+    setState(3);
+  };
+
   return (
     <div className="App">
-      <style>@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');</style>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+      </style>
       <Header onGetStarted={handleGetStarted} goHome={goHome} />
       <main className="main-content">
         {state === 0 && <HeroSection onGetStarted={handleGetStarted} />}
@@ -45,7 +51,7 @@ const App = () => {
             <div className="box">
               <ScheduleTable setCourses={setCourses} />
             </div>
-            <div className='inner-box-container'>
+            <div className="inner-box-container">
               <div className="inner-box">
                 <TimeTable courses={courses} setBuildingName={setBuildingName} setRoomNumber={setRoomNumber} /> {/* Pass setRoomNumber */}
               </div>
@@ -53,10 +59,25 @@ const App = () => {
                 <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
               </div>
             </div>
-            <div>
-              <button className='route-button'>
-                {t("calculateRoutes")} 
+            <div className="box">
+              <button className="route-button" onClick={getRoute}>
+                {t('calculateRoutes')}
               </button>
+            </div>
+          </div>
+        )}
+        {state === 3 && (
+          <div className="content-container-2">
+            <div className="box-2">
+              <h1>{t("routeCalcuation")}</h1>
+            </div>
+            <div className="inner-box-container-2">
+              <div className="inner-box-2">
+                <TimeTable courses={courses} setBuildingName={setBuildingName} setRoomNumber={setRoomNumber} /> {/* Pass setRoomNumber */}
+              </div>
+              <div className="inner-box-2">
+                <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
+              </div>
             </div>
           </div>
         )}
