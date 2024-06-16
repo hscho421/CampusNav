@@ -1,7 +1,7 @@
 import React from 'react';
 import './RouteTimeTable.css';
 
-const AvailableTimeTable = ({ courses }) => {
+const AvailableTimeTable = ({ courses, onGapClick }) => {
   console.log("Courses received in AvailableTimeTable:", courses);
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -11,7 +11,7 @@ const AvailableTimeTable = ({ courses }) => {
       const timeA = parseInt(a.startHour) * 60 + parseInt(a.startMinute);
       const timeB = parseInt(b.startHour) * 60 + parseInt(b.startMinute);
       return timeA - timeB;
-    }); 
+    });
   };
 
   const calculateGaps = (courses) => {
@@ -52,7 +52,10 @@ const AvailableTimeTable = ({ courses }) => {
                   </div>
                   {index < sortedCourses.length - 1 && (
                     <div className="gap">
-                      <p>Show Route: {gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
+                      <p onClick={() => {
+                        console.log('Gap clicked:', sortedCourses[index].buildingName, sortedCourses[index + 1].buildingName); // Add this line
+                        onGapClick(sortedCourses[index].buildingName, sortedCourses[index + 1].buildingName);
+                      }}>Show Route: {gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
                     </div>
                   )}
                 </React.Fragment>

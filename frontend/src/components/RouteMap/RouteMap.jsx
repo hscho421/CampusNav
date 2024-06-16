@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
-import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
 import './RouteMap.css';
 
-const Map = ({ university, buildingName, roomNumber }) => {
+const RouteMap = ({ route, university, buildingName, roomNumber, walkingTime }) => {
   const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
   const [markerPosition, setMarkerPosition] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -32,8 +32,6 @@ const Map = ({ university, buildingName, roomNumber }) => {
       const data = await response.json();
       if (data.status === 'OK') {
         const location = data.results[0].geometry.location;
-        console.log('Geocoded location:', location); // Debug log
-        console.log('Room number:', roomNumber); // Debug log
         setCenter({ lat: location.lat, lng: location.lng });
         setMarkerPosition({ lat: location.lat, lng: location.lng });
         setSelectedLocation({ lat: location.lat, lng: location.lng }); // Open InfoWindow immediately
@@ -88,9 +86,9 @@ const Map = ({ university, buildingName, roomNumber }) => {
         zoom={15}
         onLoad={onLoad} // Use useCallback for onLoad
       >
-        {markerPosition && (
-          <Marker 
-            position={markerPosition} 
+        {markerPosition && !route && (
+          <Marker
+            position={markerPosition}
           />
         )}
         {selectedLocation && (
@@ -105,9 +103,13 @@ const Map = ({ university, buildingName, roomNumber }) => {
             </div>
           </InfoWindow>
         )}
+        {route && (
+          <DirectionsRenderer directions={route} />
+        )}
       </GoogleMap>
+      {walkingTime && <p>Walking Time: {walkingTime}</p>} {/* Display walking time */}
     </div>
   );
 };
 
-export default Map;
+export default RouteMap;

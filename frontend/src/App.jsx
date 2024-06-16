@@ -8,7 +8,7 @@ import TimeTable from './components/TimeTable/TimeTable';
 import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable'; // Import the AvailableTimeTable component
 import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
-import RouteMap from './components/RouteMap/RouteMap'
+import RouteMap from './components/RouteMap/RouteMap';
 import './App.css';
 
 const App = () => {
@@ -18,6 +18,8 @@ const App = () => {
   const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
   const [buildingName, setBuildingName] = useState(null);
   const [roomNumber, setRoomNumber] = useState(null); // Define roomNumber state
+  const [route, setRoute] = useState(null); // State to hold the route data
+  const [walkingTime, setWalkingTime] = useState(''); // State to hold the walking time
 
   const handleGetStarted = () => {
     setState(1);
@@ -34,6 +36,29 @@ const App = () => {
 
   const getRoute = () => {
     setState(3);
+  };
+
+  const handleGapClick = async (startBuilding, endBuilding) => {
+    try {
+      console.log(`Calculating route from ${startBuilding} to ${endBuilding}`);
+      const directionsService = new window.google.maps.DirectionsService();
+      const result = await directionsService.route({
+        origin: `${startBuilding}, ${selectedUniversity}`,
+        destination: `${endBuilding}, ${selectedUniversity}`,
+        travelMode: window.google.maps.TravelMode.WALKING
+      });
+
+      if (result.status === 'OK') {
+        console.log('Route result:', result);
+        setRoute(result);
+        const duration = result.routes[0].legs[0].duration.text; // Extract walking time
+        setWalkingTime(duration); // Set walking time in state
+      } else {
+        console.error('Error fetching directions:', result);
+      }
+    } catch (error) {
+      console.error('Error in handleGapClick:', error);
+    }
   };
 
   return (
@@ -71,14 +96,15 @@ const App = () => {
         {state === 3 && (
           <div className="content-container-2">
             <div className="box-2">
-              <h1>{t('routeCalcuation')}</h1>
+              <h1>{t('routeCalculation')}</h1>
             </div>
             <div className="inner-box-container-2">
               <div className="inner-box-2">
-                <AvailableTimeTable courses={courses} /> {/* Use the new AvailableTimeTable component */}
+                <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
               </div>
               <div className="inner-box-2">
-                <RouteMap university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
+                <RouteMap route={route} university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
+                {walkingTime && <p>Walking Time: {walkingTime}</p>} {/* Display walking time */}
               </div>
             </div>
           </div>

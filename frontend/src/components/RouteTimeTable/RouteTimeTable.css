@@ -22,3 +22,6 @@
     box-shadow: #00000099 0 0 10px;
   }
   
+  .gap p:hover {
+    cursor: pointer;;
+  }
