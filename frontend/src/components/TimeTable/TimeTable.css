@@ -16,6 +16,7 @@
   flex-direction: row;
   justify-content: space-around;
   background-color: #D1D1D1;
+  height: 100%;
 }
   
 .Monday-column, .Tuesday-column, .Wednesday-column, .Thursday-column, .Friday-column  {

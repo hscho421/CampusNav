@@ -108,7 +108,7 @@ const ScheduleTable = ({ setCourses }) => {
                   name="buildingName"
                   value={course.buildingName}
                   onChange={(event) => handleChange(index, event)}
-                  placeholder={t('location')}
+                  placeholder={t('buildingName')}
                 />
               </td>
               <td>
@@ -117,7 +117,7 @@ const ScheduleTable = ({ setCourses }) => {
                   name="roomNumber"
                   value={course.roomNumber}
                   onChange={(event) => handleChange(index, event)}
-                  placeholder={t('location')}
+                  placeholder={t('roomNumber')}
                 />
               </td>
               <td>

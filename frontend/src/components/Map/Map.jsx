@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import './MapStyle.css';
 
-const Map = ({ university, buildingName }) => {
+const Map = ({ university, buildingName, roomNumber }) => {
   const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
   const [markerPosition, setMarkerPosition] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -23,7 +23,7 @@ const Map = ({ university, buildingName }) => {
     if (buildingName && isLoaded) {
       geocodeLocation(`${buildingName}, ${university}`);
     }
-  }, [buildingName, isLoaded]);
+  }, [buildingName, university, isLoaded]);
 
   const geocodeLocation = async (locationName) => {
     const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationName)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`;
@@ -33,8 +33,10 @@ const Map = ({ university, buildingName }) => {
       if (data.status === 'OK') {
         const location = data.results[0].geometry.location;
         console.log('Geocoded location:', location); // Debug log
+        console.log('Room number:', roomNumber); // Debug log
         setCenter({ lat: location.lat, lng: location.lng });
         setMarkerPosition({ lat: location.lat, lng: location.lng });
+        setSelectedLocation({ lat: location.lat, lng: location.lng }); // Open InfoWindow immediately
         setError('');
         if (mapRef.current) {
           mapRef.current.panTo({ lat: location.lat, lng: location.lng });
@@ -65,10 +67,6 @@ const Map = ({ university, buildingName }) => {
     mapRef.current = map;
   }, []);
 
-  const handleMarkerClick = () => {
-    setSelectedLocation(markerPosition);
-  };
-
   const handleInfoWindowClose = () => {
     setSelectedLocation(null);
   };
@@ -93,7 +91,6 @@ const Map = ({ university, buildingName }) => {
         {markerPosition && (
           <Marker 
             position={markerPosition} 
-            onClick={handleMarkerClick} 
           />
         )}
         {selectedLocation && (
@@ -103,7 +100,7 @@ const Map = ({ university, buildingName }) => {
           >
             <div className='location-info'>
               <h2>Location Information</h2>
-              <p>{buildingName}</p>
+              <p>{buildingName} {roomNumber}</p>
               <p>{university}</p>
             </div>
           </InfoWindow>

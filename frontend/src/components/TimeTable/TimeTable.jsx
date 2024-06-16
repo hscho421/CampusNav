@@ -1,7 +1,7 @@
 import React from 'react';
 import './TimeTable.css';
 
-const TimeTable = ({ courses, setBuildingName }) => {
+const TimeTable = ({ courses, setBuildingName, setRoomNumber }) => {
   console.log("Courses received in TimeTable:", courses);
 
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
@@ -17,6 +17,7 @@ const TimeTable = ({ courses, setBuildingName }) => {
   const handleCourseClick = (course) => {
     if (course.buildingName) {
       setBuildingName(course.buildingName);
+      setRoomNumber(course.roomNumber); // Set room number when a course is clicked
     } else {
       console.error('Course building name not provided');
     }

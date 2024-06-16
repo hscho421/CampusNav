@@ -13,6 +13,7 @@ const App = () => {
   const [courses, setCourses] = useState([]); // State to hold the courses
   const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
   const [buildingName, setBuildingName] = useState(null);
+  const [roomNumber, setRoomNumber] = useState(null); // Define roomNumber state
 
   const handleGetStarted = () => {
     setState(1);
@@ -44,10 +45,10 @@ const App = () => {
             </div>
             <div className='inner-box-container'>
               <div className="inner-box">
-                <TimeTable courses={courses} setBuildingName={setBuildingName} />
+                <TimeTable courses={courses} setBuildingName={setBuildingName} setRoomNumber={setRoomNumber} /> {/* Pass setRoomNumber */}
               </div>
               <div className="inner-box">
-                <Map university={selectedUniversity} buildingName={buildingName} />
+                <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
               </div>
             </div>
           </div>

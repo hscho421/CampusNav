@@ -52,6 +52,7 @@
         font-size: 1em ;
         justify-content: center; /* Ensure the content inside the button is centered */
         margin: auto;
+        color: #E2E2E2;
     }
 
     .submit-university:hover {
