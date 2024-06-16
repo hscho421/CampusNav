@@ -5,10 +5,12 @@ import Footer from './components/Footer/Footer';
 import UniversityInput from './components/UniversityInput/UniversityInput';
 import ScheduleTable from './components/ScheduleTable/ScheduleTable';
 import TimeTable from './components/TimeTable/TimeTable';
+import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
 import './App.css';
 
 const App = () => {
+  const { t } = useTranslation()
   const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable
   const [courses, setCourses] = useState([]); // State to hold the courses
   const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
@@ -50,6 +52,11 @@ const App = () => {
               <div className="inner-box">
                 <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
               </div>
+            </div>
+            <div>
+              <button className='route-button'>
+                {t("calculateRoutes")} 
+              </button>
             </div>
           </div>
         )}

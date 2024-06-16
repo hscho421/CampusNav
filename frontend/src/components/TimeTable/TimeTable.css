@@ -76,3 +76,7 @@
   background-color: pink;
   color: #202020;
 }
+
+.course p:hover {
+  cursor: pointer;
+}
