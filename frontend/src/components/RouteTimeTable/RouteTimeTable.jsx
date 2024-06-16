@@ -52,7 +52,6 @@ const AvailableTimeTable = ({ courses }) => {
                   </div>
                   {index < sortedCourses.length - 1 && (
                     <div className="gap">
-                      <p>Available Time</p>
                       <p>{gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
                     </div>
                   )}
