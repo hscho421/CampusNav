@@ -19,7 +19,6 @@ const App = () => {
   const [buildingName, setBuildingName] = useState(null);
   const [roomNumber, setRoomNumber] = useState(null); // Define roomNumber state
   const [route, setRoute] = useState(null); // State to hold the route data
-  const [walkingTime, setWalkingTime] = useState(''); // State to hold the walking time
 
   const handleGetStarted = () => {
     setState(1);
@@ -39,6 +38,9 @@ const App = () => {
   };
 
   const handleGapClick = async (startBuilding, endBuilding) => {
+    // Clear previous route state
+    setRoute(null);
+
     try {
       console.log(`Calculating route from ${startBuilding} to ${endBuilding}`);
       const directionsService = new window.google.maps.DirectionsService();
@@ -51,8 +53,6 @@ const App = () => {
       if (result.status === 'OK') {
         console.log('Route result:', result);
         setRoute(result);
-        const duration = result.routes[0].legs[0].duration.text; // Extract walking time
-        setWalkingTime(duration); // Set walking time in state
       } else {
         console.error('Error fetching directions:', result);
       }
@@ -104,7 +104,6 @@ const App = () => {
               </div>
               <div className="inner-box-2">
                 <RouteMap route={route} university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
-                {walkingTime && <p>Walking Time: {walkingTime}</p>} {/* Display walking time */}
               </div>
             </div>
           </div>

@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
 import './RouteMap.css';
 
-const RouteMap = ({ route, university, buildingName, roomNumber, walkingTime }) => {
+const RouteMap = ({ route, university, buildingName, roomNumber }) => {
   const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
   const [markerPosition, setMarkerPosition] = useState(null);
   const [selectedLocation, setSelectedLocation] = useState(null);
@@ -104,10 +104,20 @@ const RouteMap = ({ route, university, buildingName, roomNumber, walkingTime }) 
           </InfoWindow>
         )}
         {route && (
-          <DirectionsRenderer directions={route} />
+          <DirectionsRenderer
+            directions={route}
+            options={{
+              draggable: false,
+              suppressMarkers: false,
+              polylineOptions: {
+                strokeColor: '#ff2527',
+                strokeOpacity: 0.8,
+                strokeWeight: 5,
+              },
+            }}
+          />
         )}
       </GoogleMap>
-      {walkingTime && <p>Walking Time: {walkingTime}</p>} {/* Display walking time */}
     </div>
   );
 };
