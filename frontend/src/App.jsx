@@ -8,6 +8,7 @@ import TimeTable from './components/TimeTable/TimeTable';
 import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable'; // Import the AvailableTimeTable component
 import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
+import RouteMap from './components/RouteMap/RouteMap'
 import './App.css';
 
 const App = () => {
@@ -77,7 +78,7 @@ const App = () => {
                 <AvailableTimeTable courses={courses} /> {/* Use the new AvailableTimeTable component */}
               </div>
               <div className="inner-box-2">
-                <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
+                <RouteMap university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
               </div>
             </div>
           </div>
