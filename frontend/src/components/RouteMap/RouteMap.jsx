@@ -1,73 +1,25 @@
-import React, { useEffect, useState, useRef, useCallback } from 'react';
+import React, { useEffect, useRef, useCallback } from 'react';
 import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
 import './RouteMap.css';
 
-const RouteMap = ({ route, university, buildingName, roomNumber }) => {
-  const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
-  const [markerPosition, setMarkerPosition] = useState(null);
-  const [selectedLocation, setSelectedLocation] = useState(null);
-  const [error, setError] = useState('');
+const RouteMap = ({ route }) => {
   const mapRef = useRef(null); // Create a ref for the map
+  const directionsRendererRef = useRef(null); // Create a ref for the DirectionsRenderer
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
   });
 
   useEffect(() => {
-    if (university && isLoaded) {
-      geocodeLocation(university);
+    if (route === null && directionsRendererRef.current) {
+      // Clear the previous route from the map
+      directionsRendererRef.current.setMap(null);
     }
-  }, [university, isLoaded]);
-
-  useEffect(() => {
-    if (buildingName && isLoaded) {
-      geocodeLocation(`${buildingName}, ${university}`);
-    }
-  }, [buildingName, university, isLoaded]);
-
-  const geocodeLocation = async (locationName) => {
-    const geocodeUrl = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(locationName)}&key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}`;
-    try {
-      const response = await fetch(geocodeUrl);
-      const data = await response.json();
-      if (data.status === 'OK') {
-        const location = data.results[0].geometry.location;
-        setCenter({ lat: location.lat, lng: location.lng });
-        setMarkerPosition({ lat: location.lat, lng: location.lng });
-        setSelectedLocation({ lat: location.lat, lng: location.lng }); // Open InfoWindow immediately
-        setError('');
-        if (mapRef.current) {
-          mapRef.current.panTo({ lat: location.lat, lng: location.lng });
-          if (buildingName) {
-            mapRef.current.setZoom(18);
-          } else {
-            fitBoundsToLocation(data.results[0].geometry.viewport);
-          }
-        }
-      } else {
-        setError(`Geocoding error: ${data.status}`);
-      }
-    } catch (error) {
-      setError('Error fetching geocoding data.');
-    }
-  };
-
-  const fitBoundsToLocation = (viewport) => {
-    if (mapRef.current) {
-      const bounds = new window.google.maps.LatLngBounds();
-      bounds.extend(new window.google.maps.LatLng(viewport.northeast.lat, viewport.northeast.lng));
-      bounds.extend(new window.google.maps.LatLng(viewport.southwest.lat, viewport.southwest.lng));
-      mapRef.current.fitBounds(bounds);
-    }
-  };
+  }, [route]);
 
   const onLoad = useCallback((map) => {
     mapRef.current = map;
   }, []);
-
-  const handleInfoWindowClose = () => {
-    setSelectedLocation(null);
-  };
 
   if (loadError) {
     return <div>Error loading Google Maps: {loadError.message}</div>;
@@ -79,30 +31,12 @@ const RouteMap = ({ route, university, buildingName, roomNumber }) => {
 
   return (
     <div className='map-div'>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
       <GoogleMap
         mapContainerClassName="map-div"
-        center={center}
+        center={{ lat: 40.110588, lng: -88.228339 }} // Default center
         zoom={15}
         onLoad={onLoad} // Use useCallback for onLoad
       >
-        {markerPosition && !route && (
-          <Marker
-            position={markerPosition}
-          />
-        )}
-        {selectedLocation && (
-          <InfoWindow
-            position={selectedLocation}
-            onCloseClick={handleInfoWindowClose}
-          >
-            <div className='location-info'>
-              <h2>Location Information</h2>
-              <p>{buildingName} {roomNumber}</p>
-              <p>{university}</p>
-            </div>
-          </InfoWindow>
-        )}
         {route && (
           <DirectionsRenderer
             directions={route}
@@ -114,6 +48,12 @@ const RouteMap = ({ route, university, buildingName, roomNumber }) => {
                 strokeOpacity: 0.8,
                 strokeWeight: 5,
               },
+            }}
+            onLoad={(directionsRenderer) => {
+              if (directionsRendererRef.current) {
+                directionsRendererRef.current.setMap(null); // Clear the previous directions
+              }
+              directionsRendererRef.current = directionsRenderer; // Set the new directions
             }}
           />
         )}

@@ -103,7 +103,7 @@ const App = () => {
                 <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
               </div>
               <div className="inner-box-2">
-                <RouteMap route={route} university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
+                <RouteMap route={route} />
               </div>
             </div>
           </div>
