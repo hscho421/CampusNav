@@ -52,7 +52,7 @@ const AvailableTimeTable = ({ courses }) => {
                   </div>
                   {index < sortedCourses.length - 1 && (
                     <div className="gap">
-                      <p>{gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
+                      <p>Show Route: {gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
                     </div>
                   )}
                 </React.Fragment>
