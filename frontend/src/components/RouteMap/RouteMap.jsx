@@ -44,9 +44,9 @@ const RouteMap = ({ route }) => {
               draggable: false,
               suppressMarkers: false,
               polylineOptions: {
-                strokeColor: '#ff2527',
-                strokeOpacity: 0.8,
-                strokeWeight: 5,
+                strokeColor: 'blue',
+                strokeOpacity: 1,
+                strokeWeight: 10,
               },
             }}
             onLoad={(directionsRenderer) => {
