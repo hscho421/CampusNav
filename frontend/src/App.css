@@ -79,18 +79,25 @@ main {
   border-radius: 10px;
   z-index: 1;
   box-shadow: black 0 0 15px;
-  color: red;
 }
 
 .route-button {
-  display: block;
+  background-color: green;
   width: 100%;
   border-radius: 10px;
   z-index: 1;
+  font-size: larger;
+  font-weight: bold;
   padding: 10px;
+  color: #e3e3e3;
   box-shadow: black 0 0 15px;
   cursor: pointer;
 }
+.route-button:hover {
+  background-color: darkgreen;
+  transition: 0.2s ease-in-out;
+}
+
 
 .content-containe-2 {
   display: flex;

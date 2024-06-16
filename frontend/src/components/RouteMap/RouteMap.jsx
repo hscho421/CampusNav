@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useCallback } from 'react';
-import { GoogleMap, useLoadScript, Marker, InfoWindow, DirectionsRenderer } from '@react-google-maps/api';
+import React, { useEffect, useRef, useCallback, useState } from 'react';
+import { GoogleMap, useLoadScript, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
+import { useTranslation } from 'react-i18next';
 import './RouteMap.css';
 
-const RouteMap = ({ route }) => {
+const RouteMap = ({ route, routeInfo }) => {
+  const { t } = useTranslation();
   const mapRef = useRef(null); // Create a ref for the map
   const directionsRendererRef = useRef(null); // Create a ref for the DirectionsRenderer
+  const [showInfoWindow, setShowInfoWindow] = useState(false); // State to manage InfoWindow visibility
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
@@ -14,6 +17,7 @@ const RouteMap = ({ route }) => {
     if (route === null && directionsRendererRef.current) {
       // Clear the previous route from the map
       directionsRendererRef.current.setMap(null);
+      setShowInfoWindow(false);
     }
   }, [route]);
 
@@ -45,8 +49,8 @@ const RouteMap = ({ route }) => {
               suppressMarkers: false,
               polylineOptions: {
                 strokeColor: 'blue',
-                strokeOpacity: 1,
-                strokeWeight: 10,
+                strokeOpacity: 0.8,
+                strokeWeight: 5,
               },
             }}
             onLoad={(directionsRenderer) => {
@@ -54,8 +58,17 @@ const RouteMap = ({ route }) => {
                 directionsRendererRef.current.setMap(null); // Clear the previous directions
               }
               directionsRendererRef.current = directionsRenderer; // Set the new directions
+              setShowInfoWindow(true); // Show the InfoWindow when the route is loaded
             }}
           />
+        )}
+        {showInfoWindow && routeInfo && (
+          <InfoWindow position={routeInfo.endLocation} onCloseClick={() => setShowInfoWindow(false)}>
+            <div className='route-info'>
+              <p>{t("distance")}: {routeInfo.distance}</p>
+              <p>{t("duration")}: {routeInfo.duration}</p>
+            </div>
+          </InfoWindow>
         )}
       </GoogleMap>
     </div>

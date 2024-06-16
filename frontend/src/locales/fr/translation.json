@@ -29,6 +29,13 @@
   "tuesday": "Merdi",
   "wednesday": "Mecredi",  
   "thursday": "Jeudi",
-  "friday": "Vendredi"
+  "friday": "Vendredi",
+
+  "calculateRoutes": "Calculer des itinéraires",
+  "routeCalculation": "Tableau de bord des itinéraires",
+  "findRoute": "Trouver un itinéraire",
+  "min": "Minutes",
+  "distance": "Distancia",
+  "duration": "Durée"
   }
   

@@ -29,6 +29,13 @@
   "tuesday": "Tuesday",
   "wednesday": "Wednesday",  
   "thursday": "Thursday",
-  "friday": "Friday"
+  "friday": "Friday",
+
+  "calculateRoutes": "Compute Routes",
+  "routeCalculation": "Route Dashboard",
+  "findRoute": "Find Route",
+  "min": "minutes",
+  "distance": "Distance",
+  "duration": "Duration"
   }
   

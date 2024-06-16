@@ -29,6 +29,13 @@
   "tuesday": "화요일",
   "wednesday": "수요일",  
   "thursday": "목요일",
-  "friday": "금요일"
+  "friday": "금요일",
+
+  "calculateRoutes": "동선 계산하기",
+  "routeCalculation": "동선 대쉬보드",
+  "findRoute": "동선 찾기",
+  "min": "분",
+  "distance": "거리",
+  "duration": "소요 시간"
   }
  

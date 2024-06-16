@@ -24,3 +24,7 @@
     border: 1px solid #ccc;
   }
   
+  .route-info {
+    font-weight: bolder;
+    margin: 0px;
+  }

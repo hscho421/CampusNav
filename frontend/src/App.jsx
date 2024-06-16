@@ -19,6 +19,7 @@ const App = () => {
   const [buildingName, setBuildingName] = useState(null);
   const [roomNumber, setRoomNumber] = useState(null); // Define roomNumber state
   const [route, setRoute] = useState(null); // State to hold the route data
+  const [routeInfo, setRouteInfo] = useState(null); // State to hold the route information
 
   const handleGetStarted = () => {
     setState(1);
@@ -40,6 +41,7 @@ const App = () => {
   const handleGapClick = async (startBuilding, endBuilding) => {
     // Clear previous route state
     setRoute(null);
+    setRouteInfo(null);
 
     try {
       console.log(`Calculating route from ${startBuilding} to ${endBuilding}`);
@@ -53,6 +55,12 @@ const App = () => {
       if (result.status === 'OK') {
         console.log('Route result:', result);
         setRoute(result);
+        const routeLeg = result.routes[0].legs[0];
+        setRouteInfo({
+          distance: routeLeg.distance.text,
+          duration: routeLeg.duration.text,
+          endLocation: routeLeg.end_location,
+        });
       } else {
         console.error('Error fetching directions:', result);
       }
@@ -103,7 +111,7 @@ const App = () => {
                 <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
               </div>
               <div className="inner-box-2">
-                <RouteMap route={route} />
+                <RouteMap route={route} routeInfo={routeInfo} />
               </div>
             </div>
           </div>

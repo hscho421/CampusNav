@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import './RouteTimeTable.css';
 
 const AvailableTimeTable = ({ courses, onGapClick }) => {
   console.log("Courses received in AvailableTimeTable:", courses);
 
+  const { t } = useTranslation();
   const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
   const sortCourses = (courses) => {
@@ -46,7 +48,7 @@ const AvailableTimeTable = ({ courses, onGapClick }) => {
               const gaps = calculateGaps(sortedCourses);
               return (
                 <React.Fragment key={index}>
-                  <div className="course">
+                  <div className="course-2">
                     <p>{course.courseName}</p>
                     <p>{course.startHour.toString().padStart(2, '0')}:{course.startMinute.toString().padStart(2, '0')} - {course.endHour.toString().padStart(2, '0')}:{course.endMinute.toString().padStart(2, '0')}</p>
                   </div>
@@ -55,7 +57,9 @@ const AvailableTimeTable = ({ courses, onGapClick }) => {
                       <p onClick={() => {
                         console.log('Gap clicked:', sortedCourses[index].buildingName, sortedCourses[index + 1].buildingName); // Add this line
                         onGapClick(sortedCourses[index].buildingName, sortedCourses[index + 1].buildingName);
-                      }}>Show Route: {gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`} {gaps[index].gapMinutes}min</p>
+                      }}>
+                        {t('findRoute')} <br/>({gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`}{gaps[index].gapMinutes}{t(' min')}):
+                        </p>
                     </div>
                   )}
                 </React.Fragment>

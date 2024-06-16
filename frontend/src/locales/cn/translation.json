@@ -29,5 +29,12 @@
   "tuesday": "星期二",
   "wednesday": "星期三",  
   "thursday": "星期四",
-  "friday": "星期五"
+  "friday": "星期五",
+
+  "calculateRoutes": "计算动线",
+  "routeCalculation": "铜线仪表盘",
+  "findRoute": "查找路线",
+  "min": "分钟",
+  "distance": "距离",
+  "duration": "所需时间"
   }

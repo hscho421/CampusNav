@@ -29,5 +29,12 @@
   "tuesday": "火曜日",
   "wednesday": "水曜日",  
   "thursday": "木曜日",
-  "friday": "金曜日"
+  "friday": "金曜日",
+
+  "calculateRoutes": "동動線計算",
+  "routeCalculation": "動線 ダッシュボード",
+  "findRoute": "動線探し",
+  "min": "分",
+  "distance": "距離",
+  "duration": "所要時間"
   }
