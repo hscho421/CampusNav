@@ -1,0 +1,115 @@
+.how-it-works-container {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.image-display {
+    display: flex;
+    background-image: linear-gradient(
+          rgba(0, 0, 0, 0.4), 
+          rgba(0, 0, 0, 0.4)
+        ),url(../../assets/how-it-works.png);
+    background-size:cover;
+    background-position-y: center;
+    padding: 20px;
+    height: 70vh;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-display h1 {
+    color: white;
+    opacity: 1;
+    width: 60%;
+    font-size: 3rem;
+}
+
+.intro {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    align-items: center;
+}
+
+.intro h2 {
+    align-items: center;
+    justify-content: center;
+    width: 60%;
+    margin: 3rem;
+    font-weight: 400;
+}
+
+.intro h3 {
+    width: 60%;
+    margin: 3rem;
+    font-weight: 400;
+}
+
+.info-box {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.info-box h2 {
+    text-align: center;
+    justify-content: center;
+}
+
+.info-box-inner {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 2rem;
+    background: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
+    box-shadow: gray 0 0 20px;
+
+
+}
+
+.info-box .info-box-inner .number {
+    font-size: xx-large;
+    font-weight: 600;
+    margin-bottom: 10px;
+    
+}
+
+.roadmap {  
+    display: flex;
+    background-color: white;
+    flex-direction: column;
+    text-align: left;
+    align-items:center;
+}
+
+.roadmap h2 {
+    font-size: 3rem;
+    margin: 3rem;
+}
+
+.timeline {
+    background: linear-gradient( 135deg, #C2FFD8 10%, #465EFB 100%);
+    padding: 20px;
+    border-radius: 20px;
+    z-index: 1;
+    box-shadow: gray 0 0 20px;
+    display: flex;
+    flex-direction: row;
+    margin: 1rem;
+    text-align: left;
+    width: 40%;
+    font-size: 2rem;
+    justify-content: space-between;
+
+}
+
+.timeline-list h4{
+    font-weight: 500;
+    text-align: right;
+}

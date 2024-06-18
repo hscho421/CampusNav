@@ -11,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
 import RouteMap from './components/RouteMap/RouteMap';
 import HowItWorks from './components/HowItWorks/HowItWorks';
+import AboutUs from './components/AboutUs/AboutUs';
 import './App.css';
 
 const Home = ({ handleGetStarted }) => (
@@ -182,7 +183,8 @@ const AppContent = () => {
             universityCoords={universityCoords}
             t={t}
           />} />
-          <Route path="/how-it-works" element={<HowItWorks />} /> {/* Add this line */}
+          <Route path="/how-it-works" element={<HowItWorks />} />
+          <Route path="/about-us" element={<AboutUs />} />
         </Routes>
       </main>
       <Footer />
