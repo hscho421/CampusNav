@@ -62,8 +62,8 @@ input {
 }
 
 .action-button .control-button {
-    background: none;
-    fill: #E2E2E2;
+    fill: #202020;
+    padding: 5px;
 }
 .control-button:hover {
     cursor: pointer;
