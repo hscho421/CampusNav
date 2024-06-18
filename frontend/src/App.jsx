@@ -10,6 +10,7 @@ import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable';
 import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
 import RouteMap from './components/RouteMap/RouteMap';
+import HowItWorks from './components/HowItWorks/HowItWorks';
 import './App.css';
 
 const Home = ({ handleGetStarted }) => (
@@ -70,7 +71,7 @@ const App = () => (
 
 const AppContent = () => {
   const { t } = useTranslation();
-  const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable, 3: Route Calculation
+  const navigate = useNavigate();
   const [courses, setCourses] = useState([]); // State to hold the courses
   const [selectedUniversity, setSelectedUniversity] = useState(''); // State to hold the selected university
   const [buildingName, setBuildingName] = useState(null);
@@ -78,8 +79,6 @@ const AppContent = () => {
   const [route, setRoute] = useState(null); // State to hold the route data
   const [routeInfo, setRouteInfo] = useState(null); // State to hold the route information
   const [universityCoords, setUniversityCoords] = useState({ lat: 40.110588, lng: -88.228339 }); // Default coordinates
-
-  const navigate = useNavigate();
 
   const handleGetStarted = () => {
     navigate('/university-input');
@@ -183,6 +182,7 @@ const AppContent = () => {
             universityCoords={universityCoords}
             t={t}
           />} />
+          <Route path="/how-it-works" element={<HowItWorks />} /> {/* Add this line */}
         </Routes>
       </main>
       <Footer />
