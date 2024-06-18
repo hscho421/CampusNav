@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 import UniversityInput from './components/UniversityInput/UniversityInput';
 import ScheduleTable from './components/ScheduleTable/ScheduleTable';
 import TimeTable from './components/TimeTable/TimeTable';
-import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable'; // Import the AvailableTimeTable component
+import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable';
 import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
 import RouteMap from './components/RouteMap/RouteMap';

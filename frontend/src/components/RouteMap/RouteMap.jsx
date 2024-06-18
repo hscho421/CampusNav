@@ -25,6 +25,13 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
     mapRef.current = map;
   }, []);
 
+  // Use useEffect to recenter the map whenever universityCoords changes
+  useEffect(() => {
+    if (mapRef.current) {
+      mapRef.current.setCenter(universityCoords);
+    }
+  }, [universityCoords]);
+
   if (loadError) {
     return <div>Error loading Google Maps: {loadError.message}</div>;
   }
