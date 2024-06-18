@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import screenDisplay from "../../assets/screen.png";
+import screenDisplay from "../../assets/main.jpg";
 import './HeroSection.css';
 
 const HeroSection = ({ onGetStarted }) => {
