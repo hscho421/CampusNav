@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    user-select: none;
 }
 
 .image-display {
@@ -29,7 +30,6 @@
 .intro {
     display: flex;
     flex-direction: column;
-    background-color: white;
     text-align: center;
     align-items: center;
 }
@@ -82,7 +82,6 @@
 
 .roadmap {  
     display: flex;
-    background-color: white;
     flex-direction: column;
     text-align: left;
     align-items:center;

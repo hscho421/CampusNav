@@ -12,28 +12,25 @@ table {
     border-radius: 10px;
     overflow: hidden;
     width: 100%;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+
 }
 
 th, td {
     padding: 8px;
     text-align: center;
-    color: #E2E2E2;
+    color: #202020;
 }
 
 th {
-    background-color:green;
     border: none;
-}
-
-td {
-    background-color: #202020;
 }
 
 select {
     background: none;
     border: none;
     outline: none;
-    color: #E2E2E2;
+    color: #202020;
 }
 
 select:hover {
@@ -45,7 +42,7 @@ input {
     border: none;
     outline: none;
     text-align: center;
-    color: #E2E2E2;
+    color: #202020;
 }
 .time-select {
     outline: none;

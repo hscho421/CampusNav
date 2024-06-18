@@ -10,7 +10,7 @@ const Footer = () => {
         <footer className="footer">
             <div className="footer-content">
                 <div className="footer-left">
-                    <span>contact: (123) 456 - 7899</span>
+                    {/* <span>contact: (123) 456 - 7899</span> */}
                 </div>
                 <div className="footer-center">
                     <p className="copyright">

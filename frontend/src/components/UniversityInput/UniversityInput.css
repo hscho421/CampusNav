@@ -17,7 +17,7 @@
     
     .university-box h1 {
         font-size: 3rem;
-        color: #E2E2E2;
+        color: #202020;
     }
     
     .university-box p {
@@ -38,14 +38,15 @@
         box-sizing: border-box;
         margin-bottom: 30px;
         outline: none;
-        color: #E2E2E2;
+        color: #202020;
     }
     
     .submit-university{
         display: flex;
         flex-direction: row;
-        background-color: #1e90ff;
+        background: linear-gradient( 135deg, #1c74b3 10%, #409ee0 100%);;
         padding: 10px 20px;
+        box-shadow: gray 0 0 15px;
         border-radius: 10px;
         border: none;
         cursor: pointer;
@@ -56,8 +57,9 @@
     }
 
     .submit-university:hover {
-        background-color: #1864af;
+        background-image: linear-gradient(to top, #184279 0%, #537895 100%);
         transition: 0.2s;
+        cursor: pointer;
     }
 
 

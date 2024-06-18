@@ -2,8 +2,12 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #424242;
-  }
+
+    background-color: #DCD9D4;
+    background-image: linear-gradient(to bottom, rgba(255,255,255,0.50) 0%, rgba(0,0,0,0.50) 100%), radial-gradient(at 50% 0%, rgba(255,255,255,0.10) 0%, rgba(0,0,0,0.50) 50%);
+    background-blend-mode: soft-light,screen;
+
+}
 * {
   font-family: "Montserrat", sans-serif;
   margin: 0;
@@ -51,10 +55,8 @@ main {
 .box h1 {
   border: none;
   color: #202020;
-  background-color: #d1d1d1;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: black 0 0 10px;
   z-index: 1;
 }
 
@@ -78,18 +80,18 @@ main {
   padding: 0;
   border-radius: 10px;
   z-index: 1;
-  box-shadow: black 0 0 15px;
+  box-shadow: gray 0 0 15px;
 }
 
 .route-button {
-  background-color: green;
+  background-image: linear-gradient(to top, #184279 0%, #537895 100%);
   width: 100%;
   border-radius: 10px;
   z-index: 1;
   font-size: larger;
   font-weight: bold;
   padding: 10px;
-  color: #e3e3e3;
+  color: lightgray;
   box-shadow: black 0 0 15px;
   cursor: pointer;
 }
@@ -116,11 +118,9 @@ main {
 .box-2 h1 {
   border: none;
   color: #202020;
-  background-color: #d1d1d1;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: black 0 0 10px;
-  z-index: 1;
+
 }
 
 .inner-box-container-2 {
@@ -133,19 +133,11 @@ main {
   flex: 1;
 }
 
-.inner-box-2 .time-table-container-2 {
-  box-shadow: rgb(0, 0, 0) 0 0  15px;
-}
-
 .inner-box-2 .map-div {
   height: 100%;
   margin: 0;
   padding: 0;
   border-radius: 10px;
   z-index: 1;
-  box-shadow: black 0 0 15px;
-}
-
-.inner-box-2 .time-table-container {
-  box-shadow: black 0 0 15px;
+  box-shadow: rgba(0, 0, 0, 0.541) 0 0 15px;
 }

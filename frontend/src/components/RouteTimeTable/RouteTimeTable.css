@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #D1D1D1;
+  background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
   height: 100%;
   border-radius: 10px;
+  box-shadow: black 0 0 15px;
+
 }
 
 .available-time-table {
@@ -14,13 +16,17 @@
 }
 
 .gap {
-  background-color: green;  
+  background-image: linear-gradient(to top, #184279 0%, #537895 100%);
   padding: 0;
   margin: 10px;
   border-radius: 5px;
   z-index: 2;
   font-weight: bold;
   box-shadow: #00000099 0 0 10px;
+}
+
+.gap p {
+  color: lightgray
 }
 
 .gap p:hover {

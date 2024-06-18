@@ -6,6 +6,7 @@
     user-select: none;
     width: 100%;
     box-sizing: border-box;
+    background: none;
 }
   
 .footer-content {
@@ -53,8 +54,8 @@
 }
 
 .copyright {
-  color: #E2E2E2;
+  color: #202020;
 }
 span {
-  color: #E2E2E2;
+  color: #202020;
 }
