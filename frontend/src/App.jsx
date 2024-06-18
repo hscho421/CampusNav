@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
 import Footer from './components/Footer/Footer';
@@ -11,7 +12,63 @@ import Map from './components/Map/Map';
 import RouteMap from './components/RouteMap/RouteMap';
 import './App.css';
 
-const App = () => {
+const Home = ({ handleGetStarted }) => (
+  <HeroSection onGetStarted={handleGetStarted} />
+);
+
+const UniversityForm = ({ handleUniversitySubmit }) => (
+  <UniversityInput onSubmit={handleUniversitySubmit} />
+);
+
+const Schedule = ({ selectedUniversity, courses, setCourses, setBuildingName, setRoomNumber, getRoute, buildingName, roomNumber, t }) => {
+  return (
+    <div className="content-container">
+      <div className="box">
+        <h1>{selectedUniversity}</h1>
+      </div>
+      <div className="box">
+        <ScheduleTable setCourses={setCourses} />
+      </div>
+      <div className="inner-box-container">
+        <div className="inner-box">
+          <TimeTable courses={courses} setBuildingName={setBuildingName} setRoomNumber={setRoomNumber} /> {/* Pass setRoomNumber */}
+        </div>
+        <div className="inner-box">
+          <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
+        </div>
+      </div>
+      <div className="box">
+        <button className="route-button" onClick={getRoute}>
+          {t('calculateRoutes')}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const RouteCalculation = ({ courses, handleGapClick, route, routeInfo, universityCoords, t }) => (
+  <div className="content-container-2">
+    <div className="box-2">
+      <h1>{t('routeCalculation')}</h1>
+    </div>
+    <div className="inner-box-container-2">
+      <div className="inner-box-2">
+        <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
+      </div>
+      <div className="inner-box-2">
+        <RouteMap route={route} routeInfo={routeInfo} universityCoords={universityCoords} /> {/* Pass the universityCoords */}
+      </div>
+    </div>
+  </div>
+);
+
+const App = () => (
+  <Router>
+    <AppContent />
+  </Router>
+);
+
+const AppContent = () => {
   const { t } = useTranslation();
   const [state, setState] = useState(0); // 0: HomePage, 1: UniversityInput, 2: ScheduleTable, 3: Route Calculation
   const [courses, setCourses] = useState([]); // State to hold the courses
@@ -22,11 +79,18 @@ const App = () => {
   const [routeInfo, setRouteInfo] = useState(null); // State to hold the route information
   const [universityCoords, setUniversityCoords] = useState({ lat: 40.110588, lng: -88.228339 }); // Default coordinates
 
+  const navigate = useNavigate();
+
   const handleGetStarted = () => {
-    setState(1);
+    navigate('/university-input');
   };
 
   const geocodeAddress = async (address) => {
+    if (!window.google || !window.google.maps) {
+      console.error('Google Maps JavaScript API is not loaded.');
+      return;
+    }
+
     const geocoder = new window.google.maps.Geocoder();
     return new Promise((resolve, reject) => {
       geocoder.geocode({ address }, (results, status) => {
@@ -48,15 +112,15 @@ const App = () => {
     } catch (error) {
       console.error(error);
     }
-    setState(2);
+    navigate('/schedule-table');
   };
 
   const goHome = () => {
-    setState(0);
+    navigate('/');
   };
 
   const getRoute = () => {
-    setState(3);
+    navigate('/route-calculation');
   };
 
   const handleGapClick = async (startBuilding, endBuilding) => {
@@ -97,46 +161,29 @@ const App = () => {
       </style>
       <Header onGetStarted={handleGetStarted} goHome={goHome} />
       <main className="main-content">
-        {state === 0 && <HeroSection onGetStarted={handleGetStarted} />}
-        {state === 1 && <UniversityInput onSubmit={handleUniversitySubmit} />}
-        {state === 2 && (
-          <div className="content-container">
-            <div className="box">
-              <h1>{selectedUniversity}</h1>
-            </div>
-            <div className="box">
-              <ScheduleTable setCourses={setCourses} />
-            </div>
-            <div className="inner-box-container">
-              <div className="inner-box">
-                <TimeTable courses={courses} setBuildingName={setBuildingName} setRoomNumber={setRoomNumber} /> {/* Pass setRoomNumber */}
-              </div>
-              <div className="inner-box">
-                <Map university={selectedUniversity} buildingName={buildingName} roomNumber={roomNumber} />
-              </div>
-            </div>
-            <div className="box">
-              <button className="route-button" onClick={getRoute}>
-                {t('calculateRoutes')}
-              </button>
-            </div>
-          </div>
-        )}
-        {state === 3 && (
-          <div className="content-container-2">
-            <div className="box-2">
-              <h1>{t('routeCalculation')}</h1>
-            </div>
-            <div className="inner-box-container-2">
-              <div className="inner-box-2">
-                <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
-              </div>
-              <div className="inner-box-2">
-                <RouteMap route={route} routeInfo={routeInfo} universityCoords={universityCoords} /> {/* Pass the universityCoords */}
-              </div>
-            </div>
-          </div>
-        )}
+        <Routes>
+          <Route path="/" element={<Home handleGetStarted={handleGetStarted} />} />
+          <Route path="/university-input" element={<UniversityForm handleUniversitySubmit={handleUniversitySubmit} />} />
+          <Route path="/schedule-table" element={<Schedule
+            selectedUniversity={selectedUniversity}
+            courses={courses}
+            setCourses={setCourses}
+            setBuildingName={setBuildingName}
+            setRoomNumber={setRoomNumber}
+            getRoute={getRoute}
+            buildingName={buildingName}
+            roomNumber={roomNumber}
+            t={t}
+          />} />
+          <Route path="/route-calculation" element={<RouteCalculation
+            courses={courses}
+            handleGapClick={handleGapClick}
+            route={route}
+            routeInfo={routeInfo}
+            universityCoords={universityCoords}
+            t={t}
+          />} />
+        </Routes>
       </main>
       <Footer />
     </div>
