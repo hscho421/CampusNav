@@ -60,7 +60,7 @@ const HowItWorks = () => {
           </div>
           <div className='timeline-list'>
             <h4>Initial Release</h4>
-            <h4>First minor bug fix</h4>
+            <h4>PDF Export Tool</h4>
             <h4>Google Maps API</h4>
             <h4>Geocoding API</h4>
           </div>
