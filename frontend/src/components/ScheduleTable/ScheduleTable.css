@@ -4,8 +4,15 @@
     z-index: 1000;
     box-shadow: black 0 0 10px;
     border-radius: 10px;
-
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start with scale reduced */
+    transition: transform 1s, opacity 1s;
 }
+
+.schedule-table-container.pop-in {
+    animation: popIn 1s forwards; /* Apply the popIn animation */
+}
+
 table {
     border-collapse: collapse;
     border-collapse: collapse;
@@ -13,7 +20,6 @@ table {
     overflow: hidden;
     width: 100%;
     background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-
 }
 
 th, td {

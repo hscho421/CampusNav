@@ -30,6 +30,27 @@ const defaultCourses = [
 const ScheduleTable = ({ setCourses }) => {
   const { t } = useTranslation();
   const [courses, updateCourses] = useState(defaultCourses);
+  
+  useEffect(() => {
+    const elements = document.querySelectorAll('.schedule-table-container');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('pop-in');
+          observer.unobserve(entry.target); // Stop observing once the animation is applied
+        }
+      });
+    }, { threshold: 0.5 });
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
+
+    return () => {
+      elements.forEach(element => observer.unobserve(element));
+    };
+  }, []);
 
   useEffect(() => {
     setCourses(courses);

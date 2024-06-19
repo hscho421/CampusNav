@@ -80,9 +80,10 @@ const Map = ({ university, buildingName, roomNumber }) => {
   }
 
   return (
-    <div className='map-div'>
+   <>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <GoogleMap
+        className="map-div"
         mapContainerClassName="map-div"
         center={center}
         zoom={15}
@@ -106,7 +107,7 @@ const Map = ({ university, buildingName, roomNumber }) => {
           </InfoWindow>
         )}
       </GoogleMap>
-    </div>
+    </>
   );
 };
 

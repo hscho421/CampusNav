@@ -1,7 +1,11 @@
 .university-input {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  opacity: 0; /* Start hidden */
+  transform: scale(0.5); /* Start with scale reduced */
+  transition: transform 1s, opacity 1s;
+  animation: popIn 1s forwards; /* Apply the popIn animation */
 }
 .university-box {
     margin-top: 10%;

@@ -6,7 +6,7 @@ import Footer from './components/Footer/Footer';
 import UniversityInput from './components/UniversityInput/UniversityInput';
 import ScheduleTable from './components/ScheduleTable/ScheduleTable';
 import TimeTable from './components/TimeTable/TimeTable';
-import AvailableTimeTable from './components/RouteTimeTable/RouteTimeTable';
+import RouteTimeTable from './components/RouteTimeTable/RouteTimeTable';
 import { useTranslation } from 'react-i18next';
 import Map from './components/Map/Map';
 import RouteMap from './components/RouteMap/RouteMap';
@@ -23,6 +23,27 @@ const UniversityForm = ({ handleUniversitySubmit }) => (
 );
 
 const Schedule = ({ selectedUniversity, courses, setCourses, setBuildingName, setRoomNumber, getRoute, buildingName, roomNumber, t }) => {
+  useEffect(() => {
+    const elements = document.querySelectorAll('.time-table-container', '.map-div');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('pop-in');
+          observer.unobserve(entry.target); // Stop observing once the animation is applied
+        }
+      });
+    }, { threshold: 0.5 });
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
+
+    return () => {
+      elements.forEach(element => observer.unobserve(element));
+    };
+  }, []);
+  
   return (
     <div className="content-container">
       <div className="box">
@@ -55,7 +76,7 @@ const RouteCalculation = ({ courses, handleGapClick, route, routeInfo, universit
     </div>
     <div className="inner-box-container-2">
       <div className="inner-box-2">
-        <AvailableTimeTable courses={courses} onGapClick={handleGapClick} /> {/* Use the new AvailableTimeTable component */}
+        <RouteTimeTable courses={courses} onGapClick={handleGapClick} />
       </div>
       <div className="inner-box-2">
         <RouteMap route={route} routeInfo={routeInfo} universityCoords={universityCoords} /> {/* Pass the universityCoords */}

@@ -5,13 +5,13 @@
     max-width: 400px;
   }
   
-  .location-info h2 {
-    font-size: 18px;
-    color: #333333;
-  }
-  
-  .location-info p {
-    margin: 5px 0;
-    color: #666666;
-  }
+.location-info h2 {
+  font-size: 18px;
+  color: #333333;
+}
+
+.location-info p {
+  margin: 5px 0;
+  color: #666666;
+}
   
