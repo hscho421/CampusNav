@@ -1,3 +1,14 @@
+@keyframes popIn {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 .how-it-works-container {
     margin-top: 10px;
     display: flex;
@@ -69,8 +80,10 @@
     margin: 2rem;
     background: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);
     box-shadow: gray 0 0 20px;
-
-
+    animation: fade 1s ease-in-out infinite alternate ;
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start with scale reduced */
+    transition: transform 1s, opacity 1s;
 }
 
 .info-box .info-box-inner .number {
@@ -105,7 +118,14 @@
     width: 40%;
     font-size: 2rem;
     justify-content: space-between;
+    opacity: 0; /* Start hidden */
+    transform: scale(0.5); /* Start with scale reduced */
+    transition: transform 1s, opacity 1s;
 
+}
+
+.timeline.pop-in, .info-box-inner.pop-in {
+    animation: popIn 1s forwards; /* Apply the popIn animation */
 }
 
 .timeline-list h4{

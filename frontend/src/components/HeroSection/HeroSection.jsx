@@ -6,6 +6,27 @@ import './HeroSection.css';
 const HeroSection = ({ onGetStarted }) => {
   const { t } = useTranslation();
 
+  useEffect(() => {
+    const elements = document.querySelectorAll('.hero-image img');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('pop-in');
+          observer.unobserve(entry.target); // Stop observing once the animation is applied
+        }
+      });
+    }, { threshold: 0.5 });
+
+    elements.forEach(element => {
+      observer.observe(element);
+    });
+
+    return () => {
+      elements.forEach(element => observer.unobserve(element));
+    };
+  }, []);
+
   return (
     <section className="hero-section">
       <div className="hero-content">

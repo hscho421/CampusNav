@@ -37,6 +37,10 @@
   align-items: center; /* Center text vertically */
 }
 
+nav a:hover {
+  cursor: pointer;
+}
+
 .nav svg {
   fill: #202020;
   margin-left: 10px;

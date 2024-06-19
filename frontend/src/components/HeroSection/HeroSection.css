@@ -1,3 +1,14 @@
+@keyframes popIn {
+  0% {
+      transform: scale(0.5);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
 .hero-section {
   display: flex;
   flex-direction: row;
@@ -60,4 +71,11 @@
   overflow: hidden;
   z-index: 1;
   box-shadow: black 0 0 15px;
+  opacity: 0;
+  transform: scale(0.5); /* Start with scale reduced */
+  transition: transform 1s, opacity 1s;
+}
+
+.hero-image img.pop-in {
+  animation: popIn 1s forwards; /* Apply the popIn animation */
 }

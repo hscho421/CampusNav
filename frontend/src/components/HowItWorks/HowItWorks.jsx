@@ -8,103 +8,36 @@ const HowItWorks = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="how-it-works-container">
-      <section className='image-display'>
-        <h1>An integrated navigation system to help you get to your class on time</h1>
-      </ section>
-      <section className="intro">
-        <h2>CampusNav is your ultimate campus companion, designed to help you navigate your university with ease. From finding your classrooms to calculating the best walking routes, CampusNav has got you covered.</h2>
-        <h3>
-          Since its launch, CampusNav has been designed with the goal of better serving university students around the world. Starting with essential navigation features, it aims to help students find their classrooms and calculate the best walking routes on campus. 
-          In the future, CampusNav plans to expand its capabilities to include real-time updates on campus events and notifications for changes in class schedules. Our vision is to create a seamless university experience where students can focus on their education 
-          without the hassle of navigating large campuses. Join us as we embark on this journey to make campus life simpler and more efficient.
-        </h3>
-        <div className='info-box'>
-          <div className='info-box-inner'>
-            <p className='number'>10,030</p>
-            <p>10,030 universities in database</p>
-          </div>
-          
-          <div className='info-box-inner'>
-            <p className='number'>6</p>
-            <p>6 languages supported</p>
-          </div>
-
-          <div className='info-box-inner'>
-            <p className='number'>24/7</p>
-            <p>99.99% Google Maps API uptime</p>
-          </div>
+    <div className="about-us-container">
+      <section className="steps">
+        <h2>Getting Started with CampusNav</h2>
+        <div className="step">
+          <h3>Step 1: Enter Your University</h3>
+          <p>Begin by entering the name of your university. CampusNav will fetch the coordinates to provide accurate mapping services tailored to your campus.</p>
         </div>
-        <div className='info-box'>
-          <div className='info-box-inner'>
-            <p className='number'>99%</p>
-            <p>99% data accuracy via Google Maps</p>
-          </div>
-          
-          <div className='info-box-inner'>
-            <p className='number'>5</p>
-            <p>Major updates planned anually</p>
-          </div>
-
-          <div className='info-box-inner'>
-            <p className='number'>24/7</p>
-            <p>24/7 customer service avaliable</p>
-          </div>
+        <div className="step">
+          <h3>Step 2: Add Your Courses</h3>
+          <p>Input your course schedule, including building names and room numbers. This allows CampusNav to create a personalized map just for you, making it easy to locate all your classes.</p>
+        </div>
+        <div className="step">
+          <h3>Step 3: View Your Schedule</h3>
+          <p>Review your course schedule in a convenient table format. This overview makes it easy to see your classes at a glance, ensuring you never miss a session.</p>
+        </div>
+        <div className="step">
+          <h3>Step 4: Calculate Routes</h3>
+          <p>Click on the "Calculate Routes" button to get the best walking routes between your classes. CampusNav ensures you never get lost on campus and always find the quickest path.</p>
         </div>
       </section>
-      <section className='roadmap'>
-        <h2>CampusNav Roadmap</h2>
-        <div className='timeline'>
-          <div className='timeline-year'>
-            <h3>2024 Q1</h3>
-          </div>
-          <div className='timeline-list'>
-            <h4>Initial Release</h4>
-            <h4>PDF Export Tool</h4>
-            <h4>Google Maps API</h4>
-            <h4>Geocoding API</h4>
-          </div>
-        </div>
+      <section className="features">
+        <h2>Features</h2>
+        <ul>
+          <li>Accurate campus maps</li>
+          <li>Customizable course schedules</li>
+          <li>Real-time route calculations</li>
+          <li>User-friendly interface</li>
+        </ul>
       </section>
-      <section className='roadmap'>
-        <div className='timeline'>
-          <div className='timeline-year'>
-            <h3>2024 Q4</h3>
-          </div>
-          <div className='timeline-list'>
-            <h4>10+ languages support</h4>
-            <h4>AI Chatbot</h4>
-            <h4>Map API native language</h4>
-            <h4>Additional Transportation</h4>
-          </div>
-        </div>
-      </section>
-      <section className='roadmap'>
-        <div className='timeline'>
-          <div className='timeline-year'>
-            <h3>2025 Q1</h3>
-          </div>
-          <div className='timeline-list'>
-            <h4>Mobile Application</h4>
-            <h4>User Authentication</h4>
-            <h4>Integrate campus maps</h4>
-            <h4>Map 3D buildings</h4>
-          </div>
-        </div>
-      </section>
-      <section className='roadmap'>
-        <div className='timeline'>
-          <div className='timeline-year'>
-            <h3>2025 ~</h3>
-          </div>
-          <div className='timeline-list'>
-            <h4>Cloud data storage</h4>
-            <h4>University partnerships</h4>
-            <h4>Course registration integration</h4>
-            <h4>Support beyond universities</h4>
-          </div>
-        </div>
-      </section>
+        
       <section className="footer">
         <h2>Need Help?</h2>
         <p>If you encounter any issues or have questions, please visit our <a href="#">Support Page</a> or contact us at support@campusnav.com. We're here to help!</p>

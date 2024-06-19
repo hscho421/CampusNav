@@ -15,7 +15,7 @@
   top: 250%;
   right: 0;
   z-index: 1000;
-  background-color: #424242;
+  background-color: #DCD9D4;
   box-shadow: black 0 0 15px;
   width: fit-content;
   max-height: 1000rem; /* Maximum height for the dropdown */
@@ -31,9 +31,12 @@
 .dropdown li {
   padding: 8px 20px;
   cursor: pointer;
-  color: #E2E2E2;
+  
 }
 
 .dropdown li:hover {
-  background-color: #202020;
+  background-position: right center;
+  background-color: #fff;
+  transition: 0.1s;
+  text-decoration: none;
 }
