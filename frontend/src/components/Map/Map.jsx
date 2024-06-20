@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import { GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
+import { useMap } from '../MapContext'; // Import the useMap hook
 import useGoogleMaps from '../UseGoogleMaps';
 import './MapStyle.css';
 
 const Map = ({ university, buildingName, roomNumber }) => {
-  const [center, setCenter] = useState({ lat: -3.745, lng: -38.523 }); // Default center
+  const { center, setCenter } = useMap(); // Use the context to get and set center coordinates
   const [selectedLocation, setSelectedLocation] = useState(null);
   const [error, setError] = useState('');
   const mapRef = useRef(null); // Create a ref for the map

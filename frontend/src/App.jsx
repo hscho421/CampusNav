@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { MapProvider } from './components/MapContext'; // Import the MapProvider
 import Header from './components/Header/Header';
 import HeroSection from './components/HeroSection/HeroSection';
 import Footer from './components/Footer/Footer';
@@ -69,7 +70,7 @@ const Schedule = ({ selectedUniversity, courses, setCourses, setBuildingName, se
   );
 };
 
-const RouteCalculation = ({ courses, handleGapClick, route, routeInfo, universityCoords, t }) => (
+const RouteCalculation = ({ courses, handleGapClick, route, routeInfo, t }) => (
   <div className="content-container-2">
     <div className="box-2">
       <h1>{t('routeCalculation')}</h1>
@@ -79,7 +80,7 @@ const RouteCalculation = ({ courses, handleGapClick, route, routeInfo, universit
         <RouteTimeTable courses={courses} onGapClick={handleGapClick} />
       </div>
       <div className="inner-box-2">
-        <RouteMap route={route} routeInfo={routeInfo} universityCoords={universityCoords} /> {/* Pass the universityCoords */}
+        <RouteMap route={route} routeInfo={routeInfo} /> {/* Pass the universityCoords */}
       </div>
     </div>
   </div>
@@ -87,7 +88,9 @@ const RouteCalculation = ({ courses, handleGapClick, route, routeInfo, universit
 
 const App = () => (
   <Router>
-    <AppContent />
+    <MapProvider>
+      <AppContent />
+    </MapProvider>
   </Router>
 );
 
@@ -100,7 +103,6 @@ const AppContent = () => {
   const [roomNumber, setRoomNumber] = useState(null); // Define roomNumber state
   const [route, setRoute] = useState(null); // State to hold the route data
   const [routeInfo, setRouteInfo] = useState(null); // State to hold the route information
-  const [universityCoords, setUniversityCoords] = useState({ lat: 40.110588, lng: -88.228339 }); // Default coordinates
 
   const handleGetStarted = () => {
     navigate('/university-input');
@@ -129,7 +131,6 @@ const AppContent = () => {
     setSelectedUniversity(university);
     try {
       const coords = await geocodeAddress(university);
-      setUniversityCoords(coords);
     } catch (error) {
       console.error(error);
     }
@@ -201,7 +202,6 @@ const AppContent = () => {
             handleGapClick={handleGapClick}
             route={route}
             routeInfo={routeInfo}
-            universityCoords={universityCoords}
             t={t}
           />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
