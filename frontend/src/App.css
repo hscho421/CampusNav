@@ -129,10 +129,9 @@ main {
   box-shadow: black 0 0 15px;
   cursor: pointer;
   background-size: 500% auto;
-  transition: background-position 0.3s ease-in-out, color 0.3s ease-in-out;
   opacity: 0; /* Start hidden */
   transform: scale(0.5); /* Start with scale reduced */
-  transition: transform 1s, opacity 1s;
+  transition: transform 1s, opacity 1s, background-position 0.3s ease-in-out, color 0.3s ease-in-out;
   animation: popIn 1s forwards; /* Apply the popIn animation */
 }
 
