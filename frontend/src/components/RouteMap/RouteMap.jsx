@@ -10,6 +10,7 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
   const directionsRendererRef = useRef(null); // Create a ref for the DirectionsRenderer
   const [showInfoWindow, setShowInfoWindow] = useState(false); // State to manage InfoWindow visibility
   const markerRef = useRef(null); // Create a ref for the Marker
+  const [mapLoaded, setMapLoaded] = useState(false); // State to check if the map is loaded
 
   const { isLoaded, loadError } = useGoogleMaps();
 
@@ -22,10 +23,16 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
 
   const onLoad = useCallback((map) => {
     mapRef.current = map;
+    setMapLoaded(true); // Set map as loaded
+  }, []);
+
+  const onUnmount = useCallback(() => {
+    mapRef.current = null;
+    setMapLoaded(false);
   }, []);
 
   useEffect(() => {
-    if (mapRef.current) {
+    if (mapRef.current && mapLoaded) {
       mapRef.current.setCenter(universityCoords);
 
       // Create and place an AdvancedMarkerElement
@@ -38,7 +45,7 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
         markerRef.current.position = universityCoords;
       }
     }
-  }, [universityCoords]);
+  }, [universityCoords, mapLoaded]);
 
   if (loadError) {
     return <div>Error loading Google Maps: {loadError.message}</div>;
@@ -55,6 +62,7 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
         center={universityCoords}
         zoom={15}
         onLoad={onLoad}
+        onUnmount={onUnmount}
       >
         {route && (
           <DirectionsRenderer
