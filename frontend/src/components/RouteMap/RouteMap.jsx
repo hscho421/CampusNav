@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useCallback, useState } from 'react';
-import { GoogleMap, useLoadScript, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
+import { GoogleMap, DirectionsRenderer, InfoWindow } from '@react-google-maps/api';
 import { useTranslation } from 'react-i18next';
+import useGoogleMaps from '../UseGoogleMaps';
 import './RouteMap.css';
 
 const RouteMap = ({ route, routeInfo, universityCoords }) => {
@@ -8,14 +9,12 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
   const mapRef = useRef(null); // Create a ref for the map
   const directionsRendererRef = useRef(null); // Create a ref for the DirectionsRenderer
   const [showInfoWindow, setShowInfoWindow] = useState(false); // State to manage InfoWindow visibility
+  const markerRef = useRef(null); // Create a ref for the Marker
 
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
-  });
+  const { isLoaded, loadError } = useGoogleMaps();
 
   useEffect(() => {
     if (route === null && directionsRendererRef.current) {
-      // Clear the previous route from the map
       directionsRendererRef.current.setMap(null);
       setShowInfoWindow(false);
     }
@@ -25,10 +24,19 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
     mapRef.current = map;
   }, []);
 
-  // Use useEffect to recenter the map whenever universityCoords changes
   useEffect(() => {
     if (mapRef.current) {
       mapRef.current.setCenter(universityCoords);
+
+      // Create and place an AdvancedMarkerElement
+      if (!markerRef.current) {
+        markerRef.current = new google.maps.marker.AdvancedMarkerElement({
+          map: mapRef.current,
+          position: universityCoords,
+        });
+      } else {
+        markerRef.current.position = universityCoords;
+      }
     }
   }, [universityCoords]);
 
@@ -44,9 +52,9 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
     <div className='map-div'>
       <GoogleMap
         mapContainerClassName="map-div"
-        center={universityCoords} // Center the map based on the university coordinates
+        center={universityCoords}
         zoom={15}
-        onLoad={onLoad} // Use useCallback for onLoad
+        onLoad={onLoad}
       >
         {route && (
           <DirectionsRenderer
@@ -62,10 +70,10 @@ const RouteMap = ({ route, routeInfo, universityCoords }) => {
             }}
             onLoad={(directionsRenderer) => {
               if (directionsRendererRef.current) {
-                directionsRendererRef.current.setMap(null); // Clear the previous directions
+                directionsRendererRef.current.setMap(null);
               }
-              directionsRendererRef.current = directionsRenderer; // Set the new directions
-              setShowInfoWindow(true); // Show the InfoWindow when the route is loaded
+              directionsRendererRef.current = directionsRenderer;
+              setShowInfoWindow(true);
             }}
           />
         )}
