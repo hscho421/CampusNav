@@ -10,12 +10,11 @@
 }
 
 .App {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-
-    background-color: #DCD9D4;
-    background-blend-mode: soft-light,screen;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #DCD9D4;
+  background-blend-mode: soft-light,screen;
 
 }
 * {
@@ -32,7 +31,8 @@
 
 /* Customize the scrollbar track */
 ::-webkit-scrollbar-track {
-  background: transparent; /* Can set a background color if needed */
+  background-color: #DCD9D4;
+  background-blend-mode: soft-light,screen;
 }
 
 /* Customize the scrollbar thumb */
@@ -45,7 +45,8 @@
 
 /* Customize scrollbar thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Darken on hover */
+  background-color: #202020; /* Darken on hover */
+  transition: .3s;
 }
 
 html {
@@ -56,6 +57,11 @@ html, body {
   height: 100%;
   width: 100%;
   margin: 0;
+  overflow: hidden;
+}
+
+body {
+  overflow: auto;
 }
 
 main {

@@ -13,6 +13,7 @@ const RouteMap = ({ route, routeInfo }) => {
   const [showInfoWindow, setShowInfoWindow] = useState(false); // State to manage InfoWindow visibility
   const [mapLoaded, setMapLoaded] = useState(false); // State to check if the map is loaded
 
+
   const { isLoaded, loadError } = useGoogleMaps();
 
   useEffect(() => {
@@ -31,6 +32,13 @@ const RouteMap = ({ route, routeInfo }) => {
     mapRef.current = null;
     setMapLoaded(false);
   }, []);
+
+  const adjustedPosition = routeInfo ? {
+    lat: routeInfo.endLocation.lat() + 0.0005, // Adjust latitude slightly
+    lng: routeInfo.endLocation.lng()
+  } : null;
+
+
 
   if (loadError) {
     return <div>Error loading Google Maps: {loadError.message}</div>;
@@ -71,7 +79,7 @@ const RouteMap = ({ route, routeInfo }) => {
           />
         )}
         {showInfoWindow && routeInfo && (
-          <InfoWindow position={routeInfo.endLocation} onCloseClick={() => setShowInfoWindow(false)}>
+          <InfoWindow position={adjustedPosition} onCloseClick={() => setShowInfoWindow(false)}>
             <div className='route-info'>
               <p>{t("distance")}: {routeInfo.distance}</p>
               <p>{t("duration")}: {routeInfo.duration}</p>

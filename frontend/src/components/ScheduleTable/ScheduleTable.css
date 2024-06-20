@@ -7,6 +7,7 @@
     opacity: 0; /* Start hidden */
     transform: scale(0.5); /* Start with scale reduced */
     transition: transform 1s, opacity 1s;
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
 }
 
 .schedule-table-container.pop-in {
@@ -19,7 +20,10 @@ table {
     border-radius: 10px;
     overflow: hidden;
     width: 100%;
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+.schedule-table-container::-webkit-scrollbar-track {
+    background: transparent;
 }
 
 th, td {

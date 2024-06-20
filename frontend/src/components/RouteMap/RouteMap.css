@@ -1,30 +1,43 @@
 .location-info {
-    font-family: "Montserrat", sans-serif;
-    color: #424242;
-    background-color: #ffffff;
-    max-width: 400px;
-  }
-  
-  .location-info h2 {
-    font-size: 18px;
-    color: #333333;
-  }
-  
-  .location-info p {
-    margin: 5px 0;
-    color: #666666;
-  }
+  font-family: "Montserrat", sans-serif;
+  color: #424242;
+  background-color: #ffffff;
+  max-width: 400px;
+}
 
-  #directionsPanel {
-    background-color: black;
-    max-height: 400px;
-    overflow-y: auto;
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
+.location-info h2 {
+  font-size: 18px;
+  color: #333333;
+}
+
+.location-info p {
+  margin: 5px 0;
+  color: #666666;
+}
+
+#directionsPanel {
+  background-color: black;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
   
-  .route-info {
-    font-weight: bolder;
-    margin: 0px;
-  }
+.route-info {
+  font-weight: bolder;
+  margin: 0px;
+}
+
+.route-info p {
+  font-size: 14px;
+  color: #333;
+}
+
+.route-info p {
+  font-size: 16px;
+}
+
+.route-info p:hover {
+  cursor:text;
+}

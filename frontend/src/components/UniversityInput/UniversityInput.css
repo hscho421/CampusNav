@@ -25,24 +25,24 @@
 }
 
 .university-box p {
-    color: #666;
-    margin-bottom: 5rem;
-    width:75%
+  color: #666;
+  margin-bottom: 5rem;
+  width:75%
 
 }
 
 .university-search {
-    margin: 0;
-    padding: 15px;
-    border-radius: 100rem;
-    border: 1px solid #e3e3e3;
-    font-size: 1em;
-    box-shadow: gray 0 0 15px;
-    width: 50vw;
-    box-sizing: border-box;
-    margin-bottom: 30px;
-    outline: none;
-    color: #202020;
+  margin: 0;
+  padding: 15px;
+  border-radius: 100rem;
+  border: 1px solid #e3e3e3;
+  font-size: 1em;
+  box-shadow: gray 0 0 15px;
+  width: 50vw;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  outline: none;
+  color: #202020;
 }
 
 .submit-university{
@@ -82,6 +82,10 @@
     margin-bottom: 20px;
     background-color: #e3e3e3;
   }
+
+.dropdown::-webkit-scrollbar-track {
+  background-color: transparent;
+}
   
   .university-list {
     background-color: #e3e3e3;
