@@ -16,6 +16,7 @@
   flex-direction: row;
   justify-content: space-around;
   background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+  flex-grow: 1;
 }
   
 .Monday-column, .Tuesday-column, .Wednesday-column, .Thursday-column, .Friday-column  {
@@ -27,7 +28,6 @@
   overflow: hidden;
   z-index: 2;
   box-shadow: #00000058 0 0 10px;
-
 }
 .Monday-column {
   background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);

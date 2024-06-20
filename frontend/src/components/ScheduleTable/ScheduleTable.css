@@ -83,3 +83,12 @@ input {
     fill: gray; /* Change this to your desired hover color */
     transition: 0.3s ease;
 }
+
+.reset-button {
+    background-color: transparent;
+    user-select: none;
+}
+
+.reset-button:hover {
+    cursor: pointer;
+}

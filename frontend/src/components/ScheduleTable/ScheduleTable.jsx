@@ -4,7 +4,7 @@ import './ScheduleTable.css';
 
 // Define default values for each row
 const defaultCourses = [
-  // { weekday: 'Monday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '101',startHour: '11', startMinute: '00', endHour: '11', endMinute: '50' },
+    // { weekday: 'Monday', courseName: 'ECE 220', buildingName: 'ECEB', roomNumber: '101',startHour: '11', startMinute: '00', endHour: '11', endMinute: '50' },
   // { weekday: 'Monday', courseName: 'PHYS 212', buildingName: 'Loomis', roomNumber: '141', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
   // { weekday: 'Monday', courseName: 'MATH 257', buildingName: 'Campus Instructional Facility', roomNumber: '4011', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
   // { weekday: 'Monday', courseName: 'MATH 285', buildingName: 'Campus Instructional Facility', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
@@ -24,13 +24,15 @@ const defaultCourses = [
   { weekday: 'Friday', courseName: 'ECE 220 Labratory', buildingName: 'ECEB', roomNumber: '001', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
   { weekday: 'Friday', courseName: 'MATH 285 Labratory', buildingName: 'Digitial Computing Labratory', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
   { weekday: 'Friday', courseName: 'MATH 257 Labratory', buildingName: 'David Kinley Hall', roomNumber: '', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
-
 ];
 
 const ScheduleTable = ({ setCourses }) => {
   const { t } = useTranslation();
-  const [courses, updateCourses] = useState(defaultCourses);
-  
+  const [courses, updateCourses] = useState(() => {
+    const savedCourses = localStorage.getItem('courses');
+    return savedCourses ? JSON.parse(savedCourses) : defaultCourses;
+  });
+
   useEffect(() => {
     const elements = document.querySelectorAll('.schedule-table-container');
 
@@ -53,6 +55,7 @@ const ScheduleTable = ({ setCourses }) => {
   }, []);
 
   useEffect(() => {
+    localStorage.setItem('courses', JSON.stringify(courses));
     setCourses(courses);
   }, [courses, setCourses]);
 
@@ -75,6 +78,12 @@ const ScheduleTable = ({ setCourses }) => {
     const updatedCourses = courses.filter((_, i) => i !== index);
     updateCourses(updatedCourses);
     setCourses(updatedCourses);
+  };
+
+  const resetTable = () => {
+    updateCourses(defaultCourses);
+    setCourses(defaultCourses);
+    localStorage.removeItem('courses');
   };
 
   const generateOptions = (num) => {
@@ -203,6 +212,9 @@ const ScheduleTable = ({ setCourses }) => {
           ))}
         </tbody>
       </table>
+      <button type="button" onClick={resetTable} className="reset-button">
+        {t('reset')}
+      </button>
     </div>
   );
 };
