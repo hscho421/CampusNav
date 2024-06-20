@@ -21,7 +21,7 @@ const Header = ({ onGetStarted, goHome }) => {
 
             <nav className="nav">
                 <a onClick={() => handleNavigation('/how-it-works')}>{t('howItWorks')}</a>
-                <a onClick={() => handleNavigation('/about-us')}>{t('AboutUs')}</a>
+                <a onClick={() => handleNavigation('/about-us')}>{t('aboutUs')}</a>
                 <a href="#contact">{t('contact')}</a>
                 <a className="get-started-button" onClick={onGetStarted}>
                     {t('getStarted')}

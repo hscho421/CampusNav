@@ -27,7 +27,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <div className="how-it-works-container">
+    <div className="about-us-container">
       <section className='image-display'>
         <h1>An integrated navigation system to help you get to your class on time</h1>
       </section>

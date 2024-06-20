@@ -9,7 +9,7 @@
     }
 }
 
-.how-it-works-container {
+.about-us-container {
     margin-top: 10px;
     display: flex;
     flex-direction: column;
@@ -22,7 +22,7 @@
     background-image: linear-gradient(
           rgba(0, 0, 0, 0.4), 
           rgba(0, 0, 0, 0.4)
-        ),url(../../assets/how-it-works.png);
+        ),url(../../assets/about-us.png);
     background-size:cover;
     background-position-y: center;
     padding: 20px;
