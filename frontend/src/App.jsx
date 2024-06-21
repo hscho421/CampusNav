@@ -13,6 +13,9 @@ import Map from './components/Map/Map';
 import RouteMap from './components/RouteMap/RouteMap';
 import HowItWorks from './components/HowItWorks/HowItWorks';
 import AboutUs from './components/AboutUs/AboutUs';
+import Contact from './components/Contact/Contact';
+import TermsOfConditions from './components/PrivacyTerms/TermsOfConditions';
+import PrivacyPolicy from './components/PrivacyTerms/PrivacyPolicy';
 import './App.css';
 
 const Home = ({ handleGetStarted }) => (
@@ -206,6 +209,9 @@ const AppContent = () => {
           />} />
           <Route path="/how-it-works" element={<HowItWorks />} />
           <Route path="/about-us" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/terms-of-conditions" element={<TermsOfConditions />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         </Routes>
       </main>
       <Footer />

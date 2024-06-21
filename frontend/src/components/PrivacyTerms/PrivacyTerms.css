@@ -1,0 +1,27 @@
+.privacy-terms-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.privacy-terms-container h1 {
+    text-align: center;
+    margin: 3rem;
+}
+
+.privacy-terms-container h2, h3, p {
+    padding: 1rem 0;
+}
+
+.update {
+    font-style: italic;
+}
+
+.privacy-terms-container a:hover {
+    cursor: pointer;
+}
+
+.privacy-terms-container a {
+    text-decoration: underline;
+}
