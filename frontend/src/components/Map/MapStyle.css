@@ -11,7 +11,8 @@
 }
 
 .location-info p {
-  margin: 5px 0;
+  margin: 0;
+  padding: 0;
   color: #666666;
 }
   
