@@ -22,8 +22,8 @@ const defaultCourses = [
   { weekday: 'Thursday', courseName: 'PHYS 212 Lecture', buildingName: 'Loomis Labratory', roomNumber: '141', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
   { weekday: 'Thursday', courseName: 'PHYS 212 Labratory', buildingName: 'English Building', roomNumber: '4011', startHour: '14', startMinute: '00', endHour: '15', endMinute: '50' },
   { weekday: 'Friday', courseName: 'ECE 220 Labratory', buildingName: 'ECEB', roomNumber: '001', startHour: '12', startMinute: '00', endHour: '12', endMinute: '50' },
-  { weekday: 'Friday', courseName: 'MATH 285 Labratory', buildingName: 'Digitial Computing Labratory', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '13', endMinute: '50' },
-  { weekday: 'Friday', courseName: 'MATH 257 Labratory', buildingName: 'David Kinley Hall', roomNumber: '', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
+  { weekday: 'Friday', courseName: 'MATH 285 Labratory', buildingName: 'Digitial Computing Labratory', roomNumber: '0011', startHour: '14', startMinute: '00', endHour: '14', endMinute: '50' },
+  { weekday: 'Friday', courseName: 'MATH 257 Labratory', buildingName: 'David Kinley Hall', roomNumber: '001', startHour: '13', startMinute: '00', endHour: '13', endMinute: '50' },
 ];
 
 const ScheduleTable = ({ setCourses }) => {

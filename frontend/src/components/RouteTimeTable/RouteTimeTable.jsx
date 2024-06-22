@@ -58,7 +58,7 @@ const AvailableTimeTable = ({ courses, onGapClick }) => {
                         console.log('Gap clicked:', sortedCourses[index].buildingName, sortedCourses[index + 1].buildingName); // Add this line
                         onGapClick(sortedCourses[index].buildingName, sortedCourses[index + 1].buildingName);
                       }}>
-                        {t('findRoute')} <br/>({gaps[index].gapHours > 0 && `${gaps[index].gapHours}hr`}{gaps[index].gapMinutes}{t(' min')}):
+                        {t('findRoute')} <br/>({gaps[index].gapHours > 0 && `${gaps[index].gapHours}${t("hr")}`}{gaps[index].gapMinutes}{t('min')}):
                         </p>
                     </div>
                   )}

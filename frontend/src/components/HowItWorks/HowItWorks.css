@@ -87,7 +87,7 @@
         overflow: hidden;
     }
 
-    .step-image img {
+    .step-image video, .step-image img{
         max-width: 100%;
         object-fit: cover;
     }
