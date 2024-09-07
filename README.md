@@ -1,6 +1,6 @@
 # CampusNav
 
-**[CampusNav](https://campusnav-test.netlify.app/)** is a comprehensive web application designed to assist college students in navigating their campuses more efficiently. Its primary purpose is to simplify course registration by helping students determine whether the walking distances and times between their selected classes are manageable within the available timeframe. By integrating Google Maps or Apple Maps API, CampusNav provides accurate walking routes and times, ensuring students can plan their schedules with confidence, reducing the risk of class overlap or excessive time spent moving between locations.
+**[CampusNav](https://campusnav-test.netlify.app/)** is a comprehensive web application designed to assist college students in navigating their campuses more efficiently. Its primary purpose is to simplify course registration by helping students determine whether the walking distances and times between their selected classes are manageable within the available timeframe. By integrating Google Maps API, CampusNav provides accurate walking routes and times, ensuring students can plan their schedules with confidence, reducing the risk of class overlap or excessive time spent moving between locations.
 
 [Visit CampusNav Demo Webpage](https://campusnav-test.netlify.app/)
 
