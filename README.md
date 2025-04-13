@@ -91,6 +91,16 @@ CampusNav is an ongoing project with several planned features to enhance its fun
   A mobile app that enables students to manage their schedules on the go and receive real-time notifications about walking routes and travel times.
 
 ---
+## Developers
+
+### Core Team
+
+- **Hyunseok Cho** - *Project Lead & Full Stack Developer*
+  - University of Illinois at Urbana-Champaign
+  - [GitHub](https://github.com/hscho421) | [LinkedIn](https://linkedin.com/in/hyunseok-cho)
+
+- **Na Hyun Kim** - *Frontend Developer + UI/UX Designer*
+  - University of Illinois at Urbana-Champaign
 
 ## Screenshots
 
